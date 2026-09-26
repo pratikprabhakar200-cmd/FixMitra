@@ -1,1 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>FixMitra Admin Dashboard</title>
+
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <div class="admin-layout">
+
+        <!-- ================================
+             SIDEBAR
+        ================================= -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-logo">
+
+                <h2>🔧 FixMitra</h2>
+
+                <p>Admin Panel</p>
+
+            </div>
+
+
+            <ul class="sidebar-menu">
+
+                <li>
+                    <button
+                        class="active"
+                        onclick="showSection('dashboardSection', 'Dashboard')">
+                        📊 Dashboard
+                    </button>
+                </li>
+
+                <li>
+                    <button
+                        onclick="showSection('problemsSection', 'Customer Problems')">
+                        📋 Customer Problems
+                    </button>
+                </li>
+
+                <li>
+                    <button
+                        onclick="showSection('mitrasSection', 'Mitra Requests')">
+                        🏪 Mitra Requests
+                    </button>
+                </li>
+
+                <li>
+                    <button
+                        onclick="showSection('approvedSection', 'Approved Mitras')">
+                        ✅ Approved Mitras
+                    </button>
+                </li>
+
+                <li>
+                    <button
+                        onclick="showSection('settingsSection', 'Settings')">
+                        ⚙️ Settings
+                    </button>
+                </li>
+
+                <li>
+                    <button
+                        class="logout-btn"
+                        onclick="adminLogout()">
+                        🚪 Logout
+                    </button>
+                </li>
+
+            </ul>
+
+        </aside>
+
+
+        <!-- ================================
+             MAIN CONTENT
+        ================================= -->
+
+        <main class="main-content">
+
+
+            <!-- TOP BAR -->
+
+            <header class="topbar">
+
+                <div style="display:flex; align-items:center; gap:12px;">
+
+                    <button
+                        class="mobile-menu-btn"
+                        onclick="toggleSidebar()">
+                        ☰
+                    </button>
+
+                    <h1 id="pageTitle">
+                        Dashboard
+                    </h1>
+
+                </div>
+
+
+                <div class="admin-profile">
+
+                    <div class="admin-avatar">
+                        A
+                    </div>
+
+                    <span>
+                        Admin
+                    </span>
+
+                </div>
+
+            </header>
+
+
+            <!-- CONTENT -->
+
+            <div class="content">
+
+
+                <!-- =================================
+                     DASHBOARD
+                ================================= -->
+
+                <section
+                    id="dashboardSection"
+                    class="section active">
+
+
+                    <!-- STAT CARDS -->
+
+                    <div class="stats-grid">
+
+
+                        <div class="stat-card">
+
+                            <div class="icon">
+                                📋
+                            </div>
+
+                            <h3 id="totalProblems">
+                                0
+                            </h3>
+
+                            <p>
+                                Total Problems
+                            </p>
+
+                        </div>
+
+
+                        <div class="stat-card">
+
+                            <div class="icon">
+                                🆕
+                            </div>
+
+                            <h3 id="newProblems">
+                                0
+                            </h3>
+
+                            <p>
+                                New Problems
+                            </p>
+
+                        </div>
+
+
+                        <div class="stat-card">
+
+                            <div class="icon">
+                                🏪
+                            </div>
+
+                            <h3 id="mitraRequests">
+                                0
+                            </h3>
+
+                            <p>
+                                Mitra Requests
+                            </p>
+
+                        </div>
+
+
+                        <div class="stat-card">
+
+                            <div class="icon">
+                                ⏳
+                            </div>
+
+                            <h3 id="pendingMitras">
+                                0
+                            </h3>
+
+                            <p>
+                                Pending Mitras
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- RECENT CUSTOMER PROBLEMS -->
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <h2>
+                                    Recent Customer Problems
+                                </h2>
+
+                                <p>
+                                    Latest problems posted by customers
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div id="recentProblems">
+
+                            <!-- JavaScript will load data here -->
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- RECENT MITRA REQUESTS -->
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <h2>
+                                    Recent Mitra Requests
+                                </h2>
+
+                                <p>
+                                    Latest shop owner registrations
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div id="recentMitras">
+
+                            <!-- JavaScript will load data here -->
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================
+                     CUSTOMER PROBLEMS
+                ================================= -->
+
+                <section
+                    id="problemsSection"
+                    class="section">
+
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <h2>
+                                    Customer Problems
+                                </h2>
+
+                                <p>
+                                    Manage customer service requests
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="table-container">
+
+                            <table>
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>
+                                            ID
+                                        </th>
+
+                                        <th>
+                                            Customer
+                                        </th>
+
+                                        <th>
+                                            Mobile
+                                        </th>
+
+                                        <th>
+                                            Service
+                                        </th>
+
+                                        <th>
+                                            Location
+                                        </th>
+
+                                        <th>
+                                            Status
+                                        </th>
+
+                                        <th>
+                                            Action
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody id="problemTableBody">
+
+                                    <!-- JavaScript will load data -->
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================
+                     MITRA REQUESTS
+                ================================= -->
+
+                <section
+                    id="mitrasSection"
+                    class="section">
+
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <h2>
+                                    Mitra Requests
+                                </h2>
+
+                                <p>
+                                    Review and approve shop owner registrations
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="table-container">
+
+                            <table>
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>
+                                            ID
+                                        </th>
+
+                                        <th>
+                                            Owner
+                                        </th>
+
+                                        <th>
+                                            Business
+                                        </th>
+
+                                        <th>
+                                            Mobile
+                                        </th>
+
+                                        <th>
+                                            Service
+                                        </th>
+
+                                        <th>
+                                            Location
+                                        </th>
+
+                                        <th>
+                                            Status
+                                        </th>
+
+                                        <th>
+                                            Action
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody id="mitraTableBody">
+
+                                    <!-- JavaScript will load data -->
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================
+                     APPROVED MITRAS
+                ================================= -->
+
+                <section
+                    id="approvedSection"
+                    class="section">
+
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <h2>
+                                    Approved Mitras
+                                </h2>
+
+                                <p>
+                                    Shop owners approved by admin
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="table-container">
+
+                            <table>
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>
+                                            ID
+                                        </th>
+
+                                        <th>
+                                            Owner
+                                        </th>
+
+                                        <th>
+                                            Business
+                                        </th>
+
+                                        <th>
+                                            Mobile
+                                        </th>
+
+                                        <th>
+                                            Service
+                                        </th>
+
+                                        <th>
+                                            Location
+                                        </th>
+
+                                        <th>
+                                            Status
+                                        </th>
+
+                                        <th>
+                                            Action
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody id="approvedMitraTableBody">
+
+                                    <!-- JavaScript will load data -->
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================
+                     SETTINGS
+                ================================= -->
+
+                <section
+                    id="settingsSection"
+                    class="section">
+
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <h2>
+                                    Admin Settings
+                                </h2>
+
+                                <p>
+                                    Manage FixMitra admin preferences
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- SETTING 1 -->
+
+                        <div class="settings-item">
+
+                            <div>
+
+                                <h3>
+                                    New Problem Notifications
+                                </h3>
+
+                                <p>
+                                    Receive notification when a customer posts a new problem.
+                                </p>
+
+                            </div>
+
+
+                            <label class="switch">
+
+                                <input
+                                    type="checkbox"
+                                    checked>
+
+                                <span class="slider"></span>
+
+                            </label>
+
+                        </div>
+
+
+
+                        <!-- SETTING 2 -->
+
+                        <div class="settings-item">
+
+                            <div>
+
+                                <h3>
+                                    Mitra Request Notifications
+                                </h3>
+
+                                <p>
+                                    Receive notification when a new Mitra registration arrives.
+                                </p>
+
+                            </div>
+
+
+                            <label class="switch">
+
+                                <input
+                                    type="checkbox"
+                                    checked>
+
+                                <span class="slider"></span>
+
+                            </label>
+
+                        </div>
+
+
+
+                        <!-- SETTING 3 -->
+
+                        <div class="settings-item">
+
+                            <div>
+
+                                <h3>
+                                    Approval Required
+                                </h3>
+
+                                <p>
+                                    New Mitras require admin approval before becoming active.
+                                </p>
+
+                            </div>
+
+
+                            <label class="switch">
+
+                                <input
+                                    type="checkbox"
+                                    checked>
+
+                                <span class="slider"></span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+
+    <!-- =================================
+         DETAILS MODAL
+    ================================= -->
+
+    <div
+        class="modal"
+        id="detailsModal">
+
+
+        <div
+            class="modal-box"
+            id="detailsContent">
+
+            <!-- JavaScript will insert details -->
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================
+         JAVASCRIPT
+    ================================= -->
+
+    <script src="admin.js"></script>
+
+
+    <!-- =================================
+         MOBILE SIDEBAR SCRIPT
+    ================================= -->
+
+    <script>
+
+        function toggleSidebar() {
+
+            const sidebar =
+                document.getElementById("sidebar");
+
+            sidebar.classList.toggle("open");
+
+        }
+
+
+        document.addEventListener(
+            "click",
+            function(event) {
+
+                const sidebar =
+                    document.getElementById("sidebar");
+
+                const menuButton =
+                    document.querySelector(".mobile-menu-btn");
+
+                if (
+                    window.innerWidth <= 768 &&
+                    sidebar.classList.contains("open") &&
+                    !sidebar.contains(event.target) &&
+                    !menuButton.contains(event.target)
+                ) {
+
+                    sidebar.classList.remove("open");
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>
