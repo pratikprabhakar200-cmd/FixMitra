@@ -5,11 +5,13 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <title>FixMitra - Join as a Mitra</title>
+    <title>FixMitra - Mitra Registration</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+          href="style.css">
 
 </head>
 
@@ -17,230 +19,29 @@
 <body>
 
 
-    <!-- HEADER -->
+    <header>
 
-    <header class="header">
+        <h1>FixMitra</h1>
 
-        <div class="logo">
-
-            <h2>FixMitra</h2>
-
-            <span>Local Services, Made Easy</span>
-
-        </div>
-
-
-        <nav>
-
-            <a href="index.html">Home</a>
-
-            <a href="index.html#services">Services</a>
-
-            <a href="index.html#how-it-works">How It Works</a>
-
-            <a href="index.html#about">About</a>
-
-        </nav>
-
-
-        <button
-            class="mitra-button"
-            onclick="openMitraForm()">
-
-            Join as a Mitra
-
-        </button>
+        <p>Local Services, Made Easy</p>
 
     </header>
 
 
 
-    <!-- HERO -->
+    <main>
 
-    <section class="hero">
+        <section class="registration-box">
 
-        <div class="hero-content">
-
-            <p class="small-title">
-                BECOME A FIXMITRA PARTNER
-            </p>
-
-
-            <h1>
-                Grow Your Business<br>
-                With FixMitra
-            </h1>
-
-
-            <p class="hero-text">
-
-                Join FixMitra and connect with customers
-                who need your services in your local area.
-
-            </p>
-
-
-            <button
-                class="main-button"
-                onclick="openMitraForm()">
-
-                Register Your Business →
-
-            </button>
-
-        </div>
-
-
-        <div class="hero-card">
-
-            <div class="icon">
-                🛠️
-            </div>
-
-            <h3>
-                Get More Customers
-            </h3>
+            <h2>Join as a Mitra</h2>
 
             <p>
-                Receive service requests from customers
-                near your business.
+                Register your shop or service business
+                with FixMitra.
             </p>
 
-        </div>
 
-    </section>
-
-
-
-    <!-- BENEFITS -->
-
-    <section class="benefits">
-
-        <h2>
-            Why Join FixMitra?
-        </h2>
-
-
-        <div class="benefit-container">
-
-
-            <div class="benefit-card">
-
-                <div class="benefit-icon">
-                    📍
-                </div>
-
-                <h3>
-                    Local Customers
-                </h3>
-
-                <p>
-                    Get service requests from customers
-                    near your location.
-                </p>
-
-            </div>
-
-
-
-            <div class="benefit-card">
-
-                <div class="benefit-icon">
-                    📱
-                </div>
-
-                <h3>
-                    Easy Management
-                </h3>
-
-                <p>
-                    Manage your service requests
-                    from one dashboard.
-                </p>
-
-            </div>
-
-
-
-            <div class="benefit-card">
-
-                <div class="benefit-icon">
-                    💰
-                </div>
-
-                <h3>
-                    Grow Your Business
-                </h3>
-
-                <p>
-                    Get more opportunities and
-                    grow your local business.
-                </p>
-
-            </div>
-
-
-
-            <div class="benefit-card">
-
-                <div class="benefit-icon">
-                    ⭐
-                </div>
-
-                <h3>
-                    Build Reputation
-                </h3>
-
-                <p>
-                    Collect customer reviews and
-                    build your profile.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- MITRA REGISTRATION POPUP -->
-
-    <div
-        class="mitra-overlay"
-        id="mitraOverlay">
-
-
-        <div class="mitra-box">
-
-
-            <button
-                class="close-button"
-                onclick="closeMitraForm()">
-
-                ×
-
-            </button>
-
-
-            <div class="form-header">
-
-                <h2>
-                    Join as a Mitra
-                </h2>
-
-                <p>
-                    Register your business with FixMitra
-                </p>
-
-            </div>
-
-
-
-            <form
-                id="mitraForm"
-                onsubmit="submitMitra(event)">
+            <form id="mitraForm">
 
 
                 <!-- OWNER NAME -->
@@ -266,7 +67,7 @@
                 <input
                     type="text"
                     id="businessName"
-                    placeholder="Enter business name"
+                    placeholder="Enter shop name"
                     required>
 
 
@@ -279,10 +80,43 @@
 
                 <input
                     type="tel"
-                    id="mitraPhone"
+                    id="mobile"
                     placeholder="Enter 10-digit mobile number"
                     maxlength="10"
                     required>
+
+
+                <button
+                    type="button"
+                    onclick="sendMobileOTP()">
+
+                    Send Mobile OTP
+
+                </button>
+
+
+
+                <!-- MOBILE OTP -->
+
+                <label>
+                    Mobile Verification OTP
+                </label>
+
+                <input
+                    type="text"
+                    id="mobileOTP"
+                    placeholder="Enter OTP"
+                    maxlength="6"
+                    required>
+
+
+                <button
+                    type="button"
+                    onclick="verifyMobileOTP()">
+
+                    Verify Mobile
+
+                </button>
 
 
 
@@ -294,67 +128,100 @@
 
                 <input
                     type="email"
-                    id="mitraEmail"
+                    id="email"
                     placeholder="Enter email address"
                     required>
+
+
+                <button
+                    type="button"
+                    onclick="sendEmailOTP()">
+
+                    Send Email Verification
+
+                </button>
+
+
+
+                <!-- EMAIL OTP -->
+
+                <label>
+                    Email Verification OTP
+                </label>
+
+                <input
+                    type="text"
+                    id="emailOTP"
+                    placeholder="Enter email OTP"
+                    maxlength="6"
+                    required>
+
+
+                <button
+                    type="button"
+                    onclick="verifyEmailOTP()">
+
+                    Verify Email
+
+                </button>
 
 
 
                 <!-- SERVICE -->
 
                 <label>
-                    Service Category
+                    Service
                 </label>
 
                 <select
-                    id="mitraService"
+                    id="service"
                     required>
 
                     <option value="">
-                        Select your service
+                        Select Service
                     </option>
 
-                    <option value="Electrician">
+                    <option>
                         Electrician
                     </option>
 
-                    <option value="Plumber">
+                    <option>
                         Plumber
                     </option>
 
-                    <option value="AC Repair">
+                    <option>
                         AC Repair
                     </option>
 
-                    <option value="RO Service">
+                    <option>
                         RO Service
                     </option>
 
-                    <option value="Carpenter">
+                    <option>
                         Carpenter
                     </option>
 
-                    <option value="Cleaning">
+                    <option>
                         Cleaning
                     </option>
 
-                    <option value="Home Repair">
+                    <option>
                         Home Repair
                     </option>
 
-                    <option value="Computer Repair">
+                    <option>
                         Computer Repair
                     </option>
 
-                    <option value="Appliance Repair">
+                    <option>
                         Appliance Repair
                     </option>
 
-                    <option value="Painter">
+                    <option>
                         Painter
                     </option>
 
-                    <option value="Other">
+                    <option>
                         Other
                     </option>
 
@@ -365,30 +232,30 @@
                 <!-- LOCATION -->
 
                 <label>
-                    City / Location
+                    Location
                 </label>
 
                 <select
-                    id="mitraLocation"
+                    id="location"
                     required>
 
                     <option value="">
-                        Select your location
+                        Select Location
                     </option>
 
-                    <option value="Gurugram">
+                    <option>
                         Gurugram
                     </option>
 
-                    <option value="Delhi">
+                    <option>
                         Delhi
                     </option>
 
-                    <option value="Noida">
+                    <option>
                         Noida
                     </option>
 
-                    <option value="Faridabad">
+                    <option>
                         Faridabad
                     </option>
 
@@ -399,13 +266,13 @@
                 <!-- ADDRESS -->
 
                 <label>
-                    Shop / Business Address
+                    Full Address
                 </label>
 
                 <textarea
-                    id="mitraAddress"
+                    id="address"
                     rows="3"
-                    placeholder="Enter your complete business address"
+                    placeholder="Enter complete shop address"
                     required></textarea>
 
 
@@ -417,34 +284,48 @@
                 </label>
 
                 <select
-                    id="mitraExperience"
+                    id="experience"
                     required>
 
                     <option value="">
-                        Select experience
+                        Select Experience
                     </option>
 
-                    <option value="Less than 1 year">
+                    <option>
                         Less than 1 year
                     </option>
 
-                    <option value="1-3 years">
+                    <option>
                         1-3 years
                     </option>
 
-                    <option value="3-5 years">
+                    <option>
                         3-5 years
                     </option>
 
-                    <option value="5-10 years">
+                    <option>
                         5-10 years
                     </option>
 
-                    <option value="10+ years">
+                    <option>
                         10+ years
                     </option>
 
                 </select>
+
+
+
+                <!-- SHOP PHOTO -->
+
+                <label>
+                    Shop Photo
+                </label>
+
+                <input
+                    type="file"
+                    id="shopPhoto"
+                    accept="image/*"
+                    required>
 
 
 
@@ -456,8 +337,8 @@
 
                 <input
                     type="password"
-                    id="mitraPassword"
-                    placeholder="Create a password"
+                    id="password"
+                    placeholder="Create password"
                     minlength="6"
                     required>
 
@@ -465,23 +346,21 @@
 
                 <!-- TERMS -->
 
-                <div class="terms">
+                <label class="terms">
 
                     <input
                         type="checkbox"
-                        id="mitraTerms"
+                        id="terms"
                         required>
 
-                    <span>
-                        I agree to the FixMitra terms
-                        and conditions.
-                    </span>
+                    I agree to FixMitra
+                    terms and conditions.
 
-                </div>
+                </label>
 
 
 
-                <!-- SUBMIT -->
+                <!-- REGISTER -->
 
                 <button
                     type="submit"
@@ -494,31 +373,19 @@
 
             </form>
 
+        </section>
 
-        </div>
-
-    </div>
-
+    </main>
 
 
-    <!-- FOOTER -->
 
-    <footer class="footer">
-
-        <h2>
-            FixMitra
-        </h2>
+    <footer>
 
         <p>
-            Local Services, Made Easy
-        </p>
-
-        <p>
-            © 2026 FixMitra. All rights reserved.
+            © 2026 FixMitra
         </p>
 
     </footer>
-
 
 
     <script src="script.js"></script>
