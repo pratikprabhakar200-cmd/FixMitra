@@ -1,13 +1,14 @@
 /* =========================================
-   FIXMITRA ADMIN PANEL
-   admin.js
-   ========================================= */
+   FIXMITRA ADMIN PANEL - FINAL
+========================================= */
 
-// =========================================
-// DEMO CUSTOMER PROBLEMS
-// =========================================
+
+/* =========================================
+   DEMO CUSTOMER DATA
+========================================= */
 
 let problems = [
+
     {
         id: "P001",
         name: "Rahul Kumar",
@@ -28,7 +29,7 @@ let problems = [
         location: "Gurugram",
         address: "Sector 15, Gurugram",
         problem: "Fan is not working.",
-        status: "NEW",
+        status: "IN_PROGRESS",
         date: "26 Sep 2026"
     },
 
@@ -42,15 +43,41 @@ let problems = [
         problem: "AC is not cooling.",
         status: "COMPLETED",
         date: "25 Sep 2026"
+    },
+
+    {
+        id: "P004",
+        name: "Vikas",
+        mobile: "9876511111",
+        service: "Plumber",
+        location: "Noida",
+        address: "Sector 18, Noida",
+        problem: "Water leakage in kitchen.",
+        status: "NEW",
+        date: "25 Sep 2026"
+    },
+
+    {
+        id: "P005",
+        name: "Rohit",
+        mobile: "9876522222",
+        service: "Carpenter",
+        location: "Gurugram",
+        address: "Sector 10, Gurugram",
+        problem: "Door repair required.",
+        status: "IN_PROGRESS",
+        date: "24 Sep 2026"
     }
+
 ];
 
 
-// =========================================
-// DEMO MITRA REQUESTS
-// =========================================
+/* =========================================
+   DEMO MITRA DATA
+========================================= */
 
 let mitras = [
+
     {
         id: "M001",
         owner: "Rakesh Kumar",
@@ -88,135 +115,171 @@ let mitras = [
         address: "Sector 18, Noida",
         experience: "4 Years",
         status: "PENDING"
+    },
+
+    {
+        id: "M004",
+        owner: "Manoj",
+        business: "Manoj Plumbing",
+        mobile: "9876543214",
+        email: "manoj@example.com",
+        service: "Plumber",
+        location: "Gurugram",
+        address: "Sector 21, Gurugram",
+        experience: "6 Years",
+        status: "REJECTED"
     }
+
 ];
 
 
-// =========================================
-// SHOW ADMIN SECTION
-// =========================================
+/* =========================================
+   SECTION NAVIGATION
+========================================= */
 
-function showSection(sectionName, title) {
+function showSection(sectionName, title, button) {
 
-    const sections = document.querySelectorAll(".section");
-
-    sections.forEach(section => {
+    document.querySelectorAll(".section").forEach(section => {
         section.classList.remove("active");
     });
 
-    const selectedSection = document.getElementById(sectionName);
+    const selected =
+        document.getElementById(sectionName);
 
-    if (selectedSection) {
-        selectedSection.classList.add("active");
+    if (selected) {
+        selected.classList.add("active");
     }
 
-    const pageTitle = document.getElementById("pageTitle");
+    document.getElementById("pageTitle").textContent = title;
 
-    if (pageTitle) {
-        pageTitle.textContent = title;
-    }
+    document.querySelectorAll(".sidebar-menu button")
+        .forEach(btn => btn.classList.remove("active"));
 
-    const menuButtons = document.querySelectorAll(".sidebar-menu button");
-
-    menuButtons.forEach(button => {
-        button.classList.remove("active");
-    });
-
-    if (event && event.target) {
-        event.target.classList.add("active");
+    if (button) {
+        button.classList.add("active");
     }
 
     loadAdminData();
 }
 
 
-// =========================================
-// UPDATE DASHBOARD STATS
-// =========================================
+/* =========================================
+   DATE
+========================================= */
+
+function loadDate() {
+
+    const dateElement =
+        document.getElementById("currentDate");
+
+    if (!dateElement) return;
+
+    const now = new Date();
+
+    dateElement.textContent =
+        now.toLocaleDateString("en-IN", {
+            day: "numeric",
+            month: "short",
+            year: "numeric"
+        });
+}
+
+
+/* =========================================
+   STATUS CLASS
+========================================= */
+
+function statusClass(status) {
+
+    return status.toLowerCase();
+
+}
+
+
+/* =========================================
+   UPDATE STATS
+========================================= */
 
 function updateStats() {
 
-    const totalProblems = problems.length;
+    const total =
+        problems.length;
 
-    const newProblems = problems.filter(
-        problem => problem.status === "NEW"
-    ).length;
+    const newProblems =
+        problems.filter(p => p.status === "NEW").length;
 
-    const mitraRequests = mitras.length;
+    const inProgress =
+        problems.filter(p => p.status === "IN_PROGRESS").length;
 
-    const pendingMitras = mitras.filter(
-        mitra => mitra.status === "PENDING"
-    ).length;
+    const completed =
+        problems.filter(p => p.status === "COMPLETED").length;
 
-    const totalElement = document.getElementById("totalProblems");
-    const newElement = document.getElementById("newProblems");
-    const requestElement = document.getElementById("mitraRequests");
-    const pendingElement = document.getElementById("pendingMitras");
+    const pending =
+        mitras.filter(m => m.status === "PENDING").length;
 
-    if (totalElement) {
-        totalElement.textContent = totalProblems;
-    }
+    const approved =
+        mitras.filter(m => m.status === "APPROVED").length;
 
-    if (newElement) {
-        newElement.textContent = newProblems;
-    }
+    const rejected =
+        mitras.filter(m => m.status === "REJECTED").length;
 
-    if (requestElement) {
-        requestElement.textContent = mitraRequests;
-    }
 
-    if (pendingElement) {
-        pendingElement.textContent = pendingMitras;
-    }
+    setText("totalProblems", total);
+    setText("newProblems", newProblems);
+    setText("inProgressProblems", inProgress);
+    setText("completedProblems", completed);
+
+    setText("mitraRequests", mitras.length);
+    setText("pendingMitras", pending);
+    setText("approvedMitras", approved);
+    setText("rejectedMitras", rejected);
+
+
+    setText("reportTotalProblems", total);
+    setText("reportNewProblems", newProblems);
+    setText("reportProgressProblems", inProgress);
+    setText("reportCompletedProblems", completed);
+
+    setText("reportMitraTotal", mitras.length);
+    setText("reportMitraPending", pending);
+    setText("reportMitraApproved", approved);
+    setText("reportMitraRejected", rejected);
+
 }
 
 
-// =========================================
-// STATUS CLASS
-// =========================================
+function setText(id, value) {
 
-function getStatusClass(status) {
+    const element =
+        document.getElementById(id);
 
-    return status.toLowerCase();
+    if (element) {
+        element.textContent = value;
+    }
+
 }
 
 
-// =========================================
-// LOAD CUSTOMER PROBLEM TABLE
-// =========================================
+/* =========================================
+   CUSTOMER TABLE
+========================================= */
 
 function loadProblemTable() {
 
-    const tableBody = document.getElementById("problemTableBody");
+    const body =
+        document.getElementById("problemTableBody");
 
-    if (!tableBody) {
-        return;
-    }
+    if (!body) return;
 
-    tableBody.innerHTML = "";
-
-    if (problems.length === 0) {
-
-        tableBody.innerHTML = `
-            <tr>
-                <td colspan="7">
-                    <div class="empty-state">
-                        <div class="empty-icon">📋</div>
-                        <h3>No Customer Problems</h3>
-                        <p>No customer problem has been received yet.</p>
-                    </div>
-                </td>
-            </tr>
-        `;
-
-        return;
-    }
+    body.innerHTML = "";
 
     problems.forEach(problem => {
 
-        const row = document.createElement("tr");
+        const row =
+            document.createElement("tr");
 
         row.innerHTML = `
+
             <td>${problem.id}</td>
 
             <td>
@@ -230,71 +293,59 @@ function loadProblemTable() {
             <td>${problem.location}</td>
 
             <td>
-                <span class="status ${getStatusClass(problem.status)}">
-                    ${problem.status}
+                <span class="status ${statusClass(problem.status)}">
+                    ${problem.status.replace("_", " ")}
                 </span>
             </td>
 
             <td>
+
                 <button
                     class="btn btn-view"
                     onclick="viewProblem('${problem.id}')">
                     View
                 </button>
+
             </td>
+
         `;
 
-        tableBody.appendChild(row);
+        body.appendChild(row);
+
     });
+
 }
 
 
-// =========================================
-// LOAD MITRA TABLE
-// =========================================
+/* =========================================
+   MITRA TABLE
+========================================= */
 
 function loadMitraTable() {
 
-    const tableBody = document.getElementById("mitraTableBody");
+    const body =
+        document.getElementById("mitraTableBody");
 
-    if (!tableBody) {
-        return;
-    }
+    if (!body) return;
 
-    tableBody.innerHTML = "";
-
-    if (mitras.length === 0) {
-
-        tableBody.innerHTML = `
-            <tr>
-                <td colspan="7">
-                    <div class="empty-state">
-                        <div class="empty-icon">🏪</div>
-                        <h3>No Mitra Requests</h3>
-                        <p>No Mitra registration request has been received.</p>
-                    </div>
-                </td>
-            </tr>
-        `;
-
-        return;
-    }
+    body.innerHTML = "";
 
     mitras.forEach(mitra => {
 
-        const row = document.createElement("tr");
+        let actions = `
 
-        let actionButtons = `
             <button
                 class="btn btn-view"
                 onclick="viewMitra('${mitra.id}')">
                 View
             </button>
+
         `;
 
         if (mitra.status === "PENDING") {
 
-            actionButtons += `
+            actions += `
+
                 <button
                     class="btn btn-approve"
                     onclick="approveMitra('${mitra.id}')">
@@ -306,10 +357,16 @@ function loadMitraTable() {
                     onclick="rejectMitra('${mitra.id}')">
                     Reject
                 </button>
+
             `;
+
         }
 
+        const row =
+            document.createElement("tr");
+
         row.innerHTML = `
+
             <td>${mitra.id}</td>
 
             <td>
@@ -325,66 +382,54 @@ function loadMitraTable() {
             <td>${mitra.location}</td>
 
             <td>
-                <span class="status ${getStatusClass(mitra.status)}">
+
+                <span class="status ${statusClass(mitra.status)}">
                     ${mitra.status}
                 </span>
+
             </td>
 
             <td>
-                ${actionButtons}
+                ${actions}
             </td>
+
         `;
 
-        tableBody.appendChild(row);
+        body.appendChild(row);
+
     });
+
 }
 
 
-// =========================================
-// LOAD APPROVED MITRAS
-// =========================================
+/* =========================================
+   APPROVED MITRA TABLE
+========================================= */
 
 function loadApprovedTable() {
 
-    const tableBody = document.getElementById("approvedMitraTableBody");
+    const body =
+        document.getElementById("approvedMitraTableBody");
 
-    if (!tableBody) {
-        return;
-    }
+    if (!body) return;
 
-    tableBody.innerHTML = "";
+    body.innerHTML = "";
 
-    const approvedMitras = mitras.filter(
-        mitra => mitra.status === "APPROVED"
-    );
+    const approved =
+        mitras.filter(
+            m => m.status === "APPROVED"
+        );
 
-    if (approvedMitras.length === 0) {
+    approved.forEach(mitra => {
 
-        tableBody.innerHTML = `
-            <tr>
-                <td colspan="6">
-                    <div class="empty-state">
-                        <div class="empty-icon">🏪</div>
-                        <h3>No Approved Mitras</h3>
-                        <p>No Mitra has been approved yet.</p>
-                    </div>
-                </td>
-            </tr>
-        `;
-
-        return;
-    }
-
-    approvedMitras.forEach(mitra => {
-
-        const row = document.createElement("tr");
+        const row =
+            document.createElement("tr");
 
         row.innerHTML = `
+
             <td>${mitra.id}</td>
 
-            <td>
-                <strong>${mitra.owner}</strong>
-            </td>
+            <td>${mitra.owner}</td>
 
             <td>${mitra.business}</td>
 
@@ -395,138 +440,521 @@ function loadApprovedTable() {
             <td>${mitra.location}</td>
 
             <td>
+
                 <span class="status approved">
                     APPROVED
                 </span>
+
             </td>
 
             <td>
+
                 <button
                     class="btn btn-view"
                     onclick="viewMitra('${mitra.id}')">
                     View
                 </button>
+
             </td>
+
         `;
 
-        tableBody.appendChild(row);
+        body.appendChild(row);
+
     });
+
 }
 
 
-// =========================================
-// RECENT CUSTOMER PROBLEMS
-// =========================================
+/* =========================================
+   RECENT PROBLEMS
+========================================= */
 
 function loadRecentProblems() {
 
-    const container = document.getElementById("recentProblems");
+    const container =
+        document.getElementById("recentProblems");
 
-    if (!container) {
-        return;
-    }
+    if (!container) return;
 
     container.innerHTML = "";
 
-    const recentProblems = problems.slice(0, 5);
+    problems.slice(0, 5).forEach(problem => {
 
-    recentProblems.forEach(problem => {
+        const item =
+            document.createElement("div");
 
-        const item = document.createElement("div");
-
-        item.style.padding = "12px 0";
-        item.style.borderBottom = "1px solid #e2e8f0";
+        item.className = "recent-item";
 
         item.innerHTML = `
-            <div style="display:flex;justify-content:space-between;gap:10px;">
-                <div>
-                    <strong>${problem.name}</strong>
-                    <p style="font-size:12px;color:#64748b;margin-top:4px;">
-                        ${problem.service} • ${problem.location}
-                    </p>
-                </div>
 
-                <span class="status ${getStatusClass(problem.status)}">
-                    ${problem.status}
-                </span>
+            <div>
+
+                <strong>
+                    ${problem.name}
+                </strong>
+
+                <p>
+                    ${problem.service}
+                    •
+                    ${problem.location}
+                </p>
+
             </div>
+
+            <span class="status ${statusClass(problem.status)}">
+                ${problem.status.replace("_", " ")}
+            </span>
+
         `;
 
         container.appendChild(item);
+
     });
+
 }
 
 
-// =========================================
-// RECENT MITRA REQUESTS
-// =========================================
+/* =========================================
+   RECENT MITRAS
+========================================= */
 
 function loadRecentMitras() {
 
-    const container = document.getElementById("recentMitras");
+    const container =
+        document.getElementById("recentMitras");
 
-    if (!container) {
-        return;
-    }
+    if (!container) return;
 
     container.innerHTML = "";
 
-    const recentMitras = mitras.slice(0, 5);
+    mitras.slice(0, 5).forEach(mitra => {
 
-    recentMitras.forEach(mitra => {
+        const item =
+            document.createElement("div");
 
-        const item = document.createElement("div");
-
-        item.style.padding = "12px 0";
-        item.style.borderBottom = "1px solid #e2e8f0";
+        item.className = "recent-item";
 
         item.innerHTML = `
-            <div style="display:flex;justify-content:space-between;gap:10px;">
-                <div>
-                    <strong>${mitra.business}</strong>
 
-                    <p style="font-size:12px;color:#64748b;margin-top:4px;">
-                        ${mitra.owner} • ${mitra.service}
-                    </p>
-                </div>
+            <div>
 
-                <span class="status ${getStatusClass(mitra.status)}">
-                    ${mitra.status}
-                </span>
+                <strong>
+                    ${mitra.business}
+                </strong>
+
+                <p>
+                    ${mitra.owner}
+                    •
+                    ${mitra.service}
+                </p>
+
             </div>
+
+            <span class="status ${statusClass(mitra.status)}">
+                ${mitra.status}
+            </span>
+
         `;
 
         container.appendChild(item);
+
     });
+
 }
 
 
-// =========================================
-// VIEW CUSTOMER PROBLEM
-// =========================================
+/* =========================================
+   STATUS LIST
+========================================= */
+
+function openStatusList(type) {
+
+    const modal =
+        document.getElementById("statusModal");
+
+    const title =
+        document.getElementById("statusModalTitle");
+
+    const subtitle =
+        document.getElementById("statusModalSubtitle");
+
+    const content =
+        document.getElementById("statusListContent");
+
+
+    let list = [];
+    let isMitra = false;
+
+
+    if (type === "ALL_PROBLEMS") {
+
+        title.textContent =
+            "📋 All Customer Problems";
+
+        subtitle.textContent =
+            "Complete customer request list";
+
+        list = problems;
+
+    }
+
+    else if (type === "NEW") {
+
+        title.textContent =
+            "🆕 New Problems";
+
+        subtitle.textContent =
+            "Customer requests waiting for action";
+
+        list =
+            problems.filter(
+                p => p.status === "NEW"
+            );
+
+    }
+
+    else if (type === "IN_PROGRESS") {
+
+        title.textContent =
+            "🔧 In Progress Problems";
+
+        subtitle.textContent =
+            "Requests currently being handled";
+
+        list =
+            problems.filter(
+                p => p.status === "IN_PROGRESS"
+            );
+
+    }
+
+    else if (type === "COMPLETED") {
+
+        title.textContent =
+            "✅ Completed Problems";
+
+        subtitle.textContent =
+            "Completed customer requests";
+
+        list =
+            problems.filter(
+                p => p.status === "COMPLETED"
+            );
+
+    }
+
+    else {
+
+        isMitra = true;
+
+        if (type === "MITRA_ALL") {
+
+            title.textContent =
+                "🏪 All Mitra Requests";
+
+            subtitle.textContent =
+                "All service provider registrations";
+
+            list = mitras;
+
+        }
+
+        else if (type === "MITRA_PENDING") {
+
+            title.textContent =
+                "⏳ Pending Mitras";
+
+            subtitle.textContent =
+                "Mitra registrations waiting for approval";
+
+            list =
+                mitras.filter(
+                    m => m.status === "PENDING"
+                );
+
+        }
+
+        else if (type === "MITRA_APPROVED") {
+
+            title.textContent =
+                "🟢 Approved Mitras";
+
+            subtitle.textContent =
+                "Approved service providers";
+
+            list =
+                mitras.filter(
+                    m => m.status === "APPROVED"
+                );
+
+        }
+
+        else if (type === "MITRA_REJECTED") {
+
+            title.textContent =
+                "❌ Rejected Mitras";
+
+            subtitle.textContent =
+                "Rejected service provider registrations";
+
+            list =
+                mitras.filter(
+                    m => m.status === "REJECTED"
+                );
+
+        }
+
+    }
+
+
+    if (list.length === 0) {
+
+        content.innerHTML = `
+
+            <div style="text-align:center;padding:40px;">
+
+                <div style="font-size:40px;">
+                    📭
+                </div>
+
+                <h3>
+                    No Data Found
+                </h3>
+
+                <p style="color:#64748b;margin-top:5px;">
+                    There are no records in this category.
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+    else {
+
+        content.innerHTML =
+            isMitra
+                ? createMitraListTable(list)
+                : createProblemListTable(list);
+
+    }
+
+
+    modal.classList.add("show");
+
+}
+
+
+/* =========================================
+   PROBLEM LIST TABLE
+========================================= */
+
+function createProblemListTable(list) {
+
+    let html = `
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+                    <th>Customer</th>
+                    <th>Mobile</th>
+                    <th>Service</th>
+                    <th>Location</th>
+                    <th>Status</th>
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+    `;
+
+
+    list.forEach(problem => {
+
+        html += `
+
+            <tr>
+
+                <td>${problem.id}</td>
+
+                <td>${problem.name}</td>
+
+                <td>${problem.mobile}</td>
+
+                <td>${problem.service}</td>
+
+                <td>${problem.location}</td>
+
+                <td>
+
+                    <span class="status ${statusClass(problem.status)}">
+                        ${problem.status.replace("_"," ")}
+                    </span>
+
+                </td>
+
+                <td>
+
+                    <button
+                        class="btn btn-view"
+                        onclick="viewProblem('${problem.id}')">
+                        View Full Data
+                    </button>
+
+                </td>
+
+            </tr>
+
+        `;
+
+    });
+
+
+    html += `
+
+            </tbody>
+
+        </table>
+
+    `;
+
+    return html;
+
+}
+
+
+/* =========================================
+   MITRA LIST TABLE
+========================================= */
+
+function createMitraListTable(list) {
+
+    let html = `
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+                    <th>Owner</th>
+                    <th>Business</th>
+                    <th>Mobile</th>
+                    <th>Service</th>
+                    <th>Location</th>
+                    <th>Status</th>
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+    `;
+
+
+    list.forEach(mitra => {
+
+        html += `
+
+            <tr>
+
+                <td>${mitra.id}</td>
+
+                <td>${mitra.owner}</td>
+
+                <td>${mitra.business}</td>
+
+                <td>${mitra.mobile}</td>
+
+                <td>${mitra.service}</td>
+
+                <td>${mitra.location}</td>
+
+                <td>
+
+                    <span class="status ${statusClass(mitra.status)}">
+                        ${mitra.status}
+                    </span>
+
+                </td>
+
+                <td>
+
+                    <button
+                        class="btn btn-view"
+                        onclick="viewMitra('${mitra.id}')">
+                        View Full Data
+                    </button>
+
+                </td>
+
+            </tr>
+
+        `;
+
+    });
+
+
+    html += `
+
+            </tbody>
+
+        </table>
+
+    `;
+
+    return html;
+
+}
+
+
+/* =========================================
+   VIEW CUSTOMER
+========================================= */
 
 function viewProblem(id) {
 
-    const problem = problems.find(
-        item => item.id === id
-    );
+    const problem =
+        problems.find(
+            p => p.id === id
+        );
 
-    if (!problem) {
-        return;
-    }
+    if (!problem) return;
 
-    const modal = document.getElementById("detailsModal");
-    const modalContent = document.getElementById("detailsContent");
+    const modal =
+        document.getElementById("detailsModal");
 
-    if (!modal || !modalContent) {
-        return;
-    }
+    const content =
+        document.getElementById("detailsContent");
 
-    modalContent.innerHTML = `
+
+    content.innerHTML = `
 
         <div class="modal-header">
 
-            <h2>Customer Problem</h2>
+            <div>
+
+                <h2>
+                    📋 Customer Details
+                </h2>
+
+                <p>
+                    Problem ID: ${problem.id}
+                </p>
+
+            </div>
 
             <button
                 class="close-modal"
@@ -536,17 +964,8 @@ function viewProblem(id) {
 
         </div>
 
+
         <div class="details-grid">
-
-            <div class="detail-item">
-                <label>Problem ID</label>
-                <strong>${problem.id}</strong>
-            </div>
-
-            <div class="detail-item">
-                <label>Date</label>
-                <strong>${problem.date}</strong>
-            </div>
 
             <div class="detail-item">
                 <label>Customer Name</label>
@@ -568,58 +987,89 @@ function viewProblem(id) {
                 <strong>${problem.location}</strong>
             </div>
 
-            <div class="detail-item full">
-                <label>Address</label>
-                <strong>${problem.address}</strong>
-            </div>
-
-            <div class="detail-item full">
-                <label>Problem</label>
-                <strong>${problem.problem}</strong>
+            <div class="detail-item">
+                <label>Date</label>
+                <strong>${problem.date}</strong>
             </div>
 
             <div class="detail-item">
                 <label>Status</label>
+
                 <strong>
-                    <span class="status ${getStatusClass(problem.status)}">
-                        ${problem.status}
+
+                    <span class="status ${statusClass(problem.status)}">
+                        ${problem.status.replace("_"," ")}
                     </span>
+
                 </strong>
+
+            </div>
+
+            <div class="detail-item full">
+
+                <label>Address</label>
+
+                <strong>
+                    ${problem.address}
+                </strong>
+
+            </div>
+
+            <div class="detail-item full">
+
+                <label>Problem Description</label>
+
+                <strong>
+                    ${problem.problem}
+                </strong>
+
             </div>
 
         </div>
+
     `;
 
+
     modal.classList.add("show");
+
 }
 
 
-// =========================================
-// VIEW MITRA
-// =========================================
+/* =========================================
+   VIEW MITRA
+========================================= */
 
 function viewMitra(id) {
 
-    const mitra = mitras.find(
-        item => item.id === id
-    );
+    const mitra =
+        mitras.find(
+            m => m.id === id
+        );
 
-    if (!mitra) {
-        return;
-    }
+    if (!mitra) return;
 
-    const modal = document.getElementById("detailsModal");
-    const modalContent = document.getElementById("detailsContent");
+    const modal =
+        document.getElementById("detailsModal");
 
-    if (!modal || !modalContent) {
-        return;
-    }
+    const content =
+        document.getElementById("detailsContent");
 
-    modalContent.innerHTML = `
+
+    content.innerHTML = `
 
         <div class="modal-header">
 
-            <h2>Mitra Details</h2>
+            <div>
+
+                <h2>
+                    🏪 Mitra Details
+                </h2>
+
+                <p>
+                    Mitra ID: ${mitra.id}
+                </p>
+
+            </div>
 
             <button
                 class="close-modal"
@@ -629,21 +1079,8 @@ function viewMitra(id) {
 
         </div>
 
+
         <div class="details-grid">
-
-            <div class="detail-item">
-                <label>Mitra ID</label>
-                <strong>${mitra.id}</strong>
-            </div>
-
-            <div class="detail-item">
-                <label>Status</label>
-                <strong>
-                    <span class="status ${getStatusClass(mitra.status)}">
-                        ${mitra.status}
-                    </span>
-                </strong>
-            </div>
 
             <div class="detail-item">
                 <label>Owner Name</label>
@@ -680,119 +1117,721 @@ function viewMitra(id) {
                 <strong>${mitra.experience}</strong>
             </div>
 
+            <div class="detail-item">
+                <label>Status</label>
+
+                <strong>
+
+                    <span class="status ${statusClass(mitra.status)}">
+                        ${mitra.status}
+                    </span>
+
+                </strong>
+
+            </div>
+
             <div class="detail-item full">
-                <label>Address</label>
-                <strong>${mitra.address}</strong>
+
+                <label>Business Address</label>
+
+                <strong>
+                    ${mitra.address}
+                </strong>
+
             </div>
 
         </div>
+
     `;
 
+
     modal.classList.add("show");
+
 }
 
 
-// =========================================
-// APPROVE MITRA
-// =========================================
+/* =========================================
+   APPROVE MITRA
+========================================= */
 
 function approveMitra(id) {
 
-    const mitra = mitras.find(
-        item => item.id === id
-    );
+    const mitra =
+        mitras.find(
+            m => m.id === id
+        );
 
-    if (!mitra) {
-        return;
-    }
+    if (!mitra) return;
 
-    const confirmApproval = confirm(
-        `Approve ${mitra.business}?`
-    );
-
-    if (!confirmApproval) {
-        return;
-    }
+    if (
+        !confirm(
+            `Approve ${mitra.business}?`
+        )
+    ) return;
 
     mitra.status = "APPROVED";
 
     loadAdminData();
 
     alert(
-        `${mitra.business} has been approved successfully.`
+        `${mitra.business} approved successfully.`
     );
+
 }
 
 
-// =========================================
-// REJECT MITRA
-// =========================================
+/* =========================================
+   REJECT MITRA
+========================================= */
 
 function rejectMitra(id) {
 
-    const mitra = mitras.find(
-        item => item.id === id
-    );
+    const mitra =
+        mitras.find(
+            m => m.id === id
+        );
 
-    if (!mitra) {
-        return;
-    }
+    if (!mitra) return;
 
-    const confirmReject = confirm(
-        `Reject ${mitra.business}?`
-    );
-
-    if (!confirmReject) {
-        return;
-    }
+    if (
+        !confirm(
+            `Reject ${mitra.business}?`
+        )
+    ) return;
 
     mitra.status = "REJECTED";
 
     loadAdminData();
 
     alert(
-        `${mitra.business} has been rejected.`
+        `${mitra.business} rejected.`
     );
+
 }
 
 
-// =========================================
-// CLOSE DETAILS MODAL
-// =========================================
+/* =========================================
+   CLOSE MODALS
+========================================= */
 
 function closeDetails() {
 
-    const modal = document.getElementById("detailsModal");
+    document
+        .getElementById("detailsModal")
+        .classList.remove("show");
 
-    if (modal) {
-        modal.classList.remove("show");
-    }
 }
 
 
-// =========================================
-// ADMIN LOGOUT
-// =========================================
+function closeStatusList() {
+
+    document
+        .getElementById("statusModal")
+        .classList.remove("show");
+
+}
+
+
+function closeReport() {
+
+    document
+        .getElementById("reportModal")
+        .classList.remove("show");
+
+}
+
+
+/* =========================================
+   SERVICE SUMMARY
+========================================= */
+
+function loadServiceSummary() {
+
+    const container =
+        document.getElementById("serviceSummary");
+
+    if (!container) return;
+
+    const data = {};
+
+    problems.forEach(problem => {
+
+        if (!data[problem.service]) {
+            data[problem.service] = 0;
+        }
+
+        data[problem.service]++;
+
+    });
+
+
+    const max =
+        Math.max(...Object.values(data), 1);
+
+    container.innerHTML = "";
+
+
+    Object.entries(data).forEach(
+        ([service, count]) => {
+
+            const percentage =
+                (count / max) * 100;
+
+            container.innerHTML += `
+
+                <div class="summary-row">
+
+                    <div class="summary-name">
+                        ${service}
+                    </div>
+
+                    <div class="summary-bar-box">
+
+                        <div
+                            class="summary-bar"
+                            style="width:${percentage}%">
+                        </div>
+
+                    </div>
+
+                    <div class="summary-count">
+                        ${count}
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   LOCATION SUMMARY
+========================================= */
+
+function loadLocationSummary() {
+
+    const container =
+        document.getElementById("locationSummary");
+
+    if (!container) return;
+
+    const data = {};
+
+    problems.forEach(problem => {
+
+        if (!data[problem.location]) {
+            data[problem.location] = 0;
+        }
+
+        data[problem.location]++;
+
+    });
+
+
+    const max =
+        Math.max(...Object.values(data), 1);
+
+    container.innerHTML = "";
+
+
+    Object.entries(data).forEach(
+        ([location, count]) => {
+
+            const percentage =
+                (count / max) * 100;
+
+            container.innerHTML += `
+
+                <div class="summary-row">
+
+                    <div class="summary-name">
+                        ${location}
+                    </div>
+
+                    <div class="summary-bar-box">
+
+                        <div
+                            class="summary-bar"
+                            style="width:${percentage}%">
+                        </div>
+
+                    </div>
+
+                    <div class="summary-count">
+                        ${count}
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   FULL REPORT
+========================================= */
+
+function viewFullReport() {
+
+    const total =
+        problems.length;
+
+    const newCount =
+        problems.filter(
+            p => p.status === "NEW"
+        ).length;
+
+    const progress =
+        problems.filter(
+            p => p.status === "IN_PROGRESS"
+        ).length;
+
+    const completed =
+        problems.filter(
+            p => p.status === "COMPLETED"
+        ).length;
+
+
+    const pending =
+        mitras.filter(
+            m => m.status === "PENDING"
+        ).length;
+
+    const approved =
+        mitras.filter(
+            m => m.status === "APPROVED"
+        ).length;
+
+    const rejected =
+        mitras.filter(
+            m => m.status === "REJECTED"
+        ).length;
+
+
+    const content =
+        document.getElementById(
+            "fullReportContent"
+        );
+
+
+    content.innerHTML = `
+
+        <div class="report-grid">
+
+            <div class="report-card">
+                <span>📋</span>
+                <strong>${total}</strong>
+                <p>Total Problems</p>
+            </div>
+
+            <div class="report-card">
+                <span>🆕</span>
+                <strong>${newCount}</strong>
+                <p>New</p>
+            </div>
+
+            <div class="report-card">
+                <span>🔧</span>
+                <strong>${progress}</strong>
+                <p>In Progress</p>
+            </div>
+
+            <div class="report-card">
+                <span>✅</span>
+                <strong>${completed}</strong>
+                <p>Completed</p>
+            </div>
+
+            <div class="report-card">
+                <span>🏪</span>
+                <strong>${mitras.length}</strong>
+                <p>Mitra Requests</p>
+            </div>
+
+            <div class="report-card">
+                <span>⏳</span>
+                <strong>${pending}</strong>
+                <p>Pending Mitras</p>
+            </div>
+
+            <div class="report-card">
+                <span>🟢</span>
+                <strong>${approved}</strong>
+                <p>Approved Mitras</p>
+            </div>
+
+            <div class="report-card">
+                <span>❌</span>
+                <strong>${rejected}</strong>
+                <p>Rejected Mitras</p>
+            </div>
+
+        </div>
+
+
+        <div class="panel">
+
+            <h3>
+                Customer Problems
+            </h3>
+
+            <p style="margin-top:10px;">
+                Total: ${total}
+                |
+                New: ${newCount}
+                |
+                In Progress: ${progress}
+                |
+                Completed: ${completed}
+            </p>
+
+        </div>
+
+
+        <div class="panel">
+
+            <h3>
+                Mitra Status
+            </h3>
+
+            <p style="margin-top:10px;">
+                Total: ${mitras.length}
+                |
+                Pending: ${pending}
+                |
+                Approved: ${approved}
+                |
+                Rejected: ${rejected}
+            </p>
+
+        </div>
+
+    `;
+
+
+    document
+        .getElementById("reportModal")
+        .classList.add("show");
+
+}
+
+
+/* =========================================
+   DOWNLOAD PPT
+========================================= */
+
+function downloadPPT() {
+
+    if (typeof pptxgen === "undefined") {
+
+        alert(
+            "PPT generator is not available. Please check your internet connection."
+        );
+
+        return;
+
+    }
+
+
+    const pptx =
+        new pptxgen();
+
+
+    pptx.layout = "LAYOUT_WIDE";
+
+    pptx.author = "FixMitra";
+
+    pptx.subject =
+        "FixMitra Status Report";
+
+    pptx.title =
+        "FixMitra Status Report";
+
+    pptx.company =
+        "FixMitra";
+
+
+    const total =
+        problems.length;
+
+    const newCount =
+        problems.filter(
+            p => p.status === "NEW"
+        ).length;
+
+    const progress =
+        problems.filter(
+            p => p.status === "IN_PROGRESS"
+        ).length;
+
+    const completed =
+        problems.filter(
+            p => p.status === "COMPLETED"
+        ).length;
+
+    const pending =
+        mitras.filter(
+            m => m.status === "PENDING"
+        ).length;
+
+    const approved =
+        mitras.filter(
+            m => m.status === "APPROVED"
+        ).length;
+
+    const rejected =
+        mitras.filter(
+            m => m.status === "REJECTED"
+        ).length;
+
+
+    /* TITLE SLIDE */
+
+    let slide =
+        pptx.addSlide();
+
+    slide.background = {
+        color: "0F172A"
+    };
+
+
+    slide.addText(
+        "FixMitra",
+        {
+            x: 0.7,
+            y: 1.3,
+            w: 11,
+            h: 0.7,
+            fontSize: 34,
+            bold: true,
+            color: "FFFFFF"
+        }
+    );
+
+
+    slide.addText(
+        "Service Marketplace Status Report",
+        {
+            x: 0.7,
+            y: 2.2,
+            w: 11,
+            h: 0.5,
+            fontSize: 22,
+            color: "CBD5E1"
+        }
+    );
+
+
+    slide.addText(
+        new Date().toLocaleDateString("en-IN"),
+        {
+            x: 0.7,
+            y: 3.1,
+            w: 5,
+            h: 0.4,
+            fontSize: 16,
+            color: "94A3B8"
+        }
+    );
+
+
+    /* CUSTOMER SLIDE */
+
+    slide =
+        pptx.addSlide();
+
+
+    slide.addText(
+        "Customer Problems",
+        {
+            x: 0.5,
+            y: 0.4,
+            w: 12,
+            h: 0.5,
+            fontSize: 26,
+            bold: true
+        }
+    );
+
+
+    slide.addText(
+        `Total Problems: ${total}`,
+        {
+            x: 0.7,
+            y: 1.3,
+            w: 5,
+            h: 0.5,
+            fontSize: 22,
+            bold: true
+        }
+    );
+
+
+    slide.addText(
+        `New: ${newCount}\nIn Progress: ${progress}\nCompleted: ${completed}`,
+        {
+            x: 0.7,
+            y: 2.1,
+            w: 5,
+            h: 1.5,
+            fontSize: 20,
+            breakLine: false
+        }
+    );
+
+
+    /* MITRA SLIDE */
+
+    slide =
+        pptx.addSlide();
+
+
+    slide.addText(
+        "Mitra Status",
+        {
+            x: 0.5,
+            y: 0.4,
+            w: 12,
+            h: 0.5,
+            fontSize: 26,
+            bold: true
+        }
+    );
+
+
+    slide.addText(
+        `Total Mitra Requests: ${mitras.length}`,
+        {
+            x: 0.7,
+            y: 1.3,
+            w: 6,
+            h: 0.5,
+            fontSize: 22,
+            bold: true
+        }
+    );
+
+
+    slide.addText(
+        `Pending: ${pending}\nApproved: ${approved}\nRejected: ${rejected}`,
+        {
+            x: 0.7,
+            y: 2.1,
+            w: 5,
+            h: 1.5,
+            fontSize: 20
+        }
+    );
+
+
+    /* DATA TABLE SLIDE */
+
+    slide =
+        pptx.addSlide();
+
+
+    slide.addText(
+        "Customer Request Details",
+        {
+            x: 0.5,
+            y: 0.3,
+            w: 12,
+            h: 0.5,
+            fontSize: 24,
+            bold: true
+        }
+    );
+
+
+    const rows = [
+
+        [
+            "ID",
+            "Customer",
+            "Service",
+            "Location",
+            "Status"
+        ]
+
+    ];
+
+
+    problems.forEach(problem => {
+
+        rows.push([
+
+            problem.id,
+            problem.name,
+            problem.service,
+            problem.location,
+            problem.status
+
+        ]);
+
+    });
+
+
+    slide.addTable(
+        rows,
+        {
+            x: 0.4,
+            y: 1.0,
+            w: 12.2,
+            h: 5.5,
+            fontSize: 12,
+            border: {
+                type: "solid",
+                color: "CCCCCC"
+            },
+            fill: "F8FAFC",
+            color: "1E293B"
+        }
+    );
+
+
+    pptx.writeFile({
+        fileName:
+            "FixMitra-Status-Report.pptx"
+    });
+
+}
+
+
+/* =========================================
+   ADMIN LOGOUT
+========================================= */
 
 function adminLogout() {
 
-    const logout = confirm(
-        "Are you sure you want to logout?"
-    );
+    if (
+        confirm(
+            "Are you sure you want to logout?"
+        )
+    ) {
 
-    if (!logout) {
-        return;
+        alert(
+            "Admin logout demo completed."
+        );
+
+        window.location.href =
+            "index.html";
+
     }
 
-    alert("Admin logout demo completed.");
-
-    window.location.href = "index.html";
 }
 
 
-// =========================================
-// LOAD ALL ADMIN DATA
-// =========================================
+/* =========================================
+   LOAD EVERYTHING
+========================================= */
 
 function loadAdminData() {
 
@@ -807,43 +1846,87 @@ function loadAdminData() {
     loadRecentProblems();
 
     loadRecentMitras();
+
+    loadServiceSummary();
+
+    loadLocationSummary();
+
+    loadDate();
+
 }
 
 
-// =========================================
-// CLOSE MODAL WHEN CLICKING OUTSIDE
-// =========================================
+/* =========================================
+   CLOSE MODALS ON OUTSIDE CLICK
+========================================= */
 
-window.addEventListener("click", function(event) {
+window.addEventListener(
+    "click",
+    function(event) {
 
-    const modal = document.getElementById("detailsModal");
+        const details =
+            document.getElementById(
+                "detailsModal"
+            );
 
-    if (event.target === modal) {
-        closeDetails();
+        const status =
+            document.getElementById(
+                "statusModal"
+            );
+
+        const report =
+            document.getElementById(
+                "reportModal"
+            );
+
+
+        if (event.target === details) {
+            closeDetails();
+        }
+
+        if (event.target === status) {
+            closeStatusList();
+        }
+
+        if (event.target === report) {
+            closeReport();
+        }
+
     }
+);
 
-});
 
+/* =========================================
+   ESCAPE
+========================================= */
 
-// =========================================
-// ESCAPE KEY
-// =========================================
+document.addEventListener(
+    "keydown",
+    function(event) {
 
-document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
 
-    if (event.key === "Escape") {
-        closeDetails();
+            closeDetails();
+
+            closeStatusList();
+
+            closeReport();
+
+        }
+
     }
+);
 
-});
 
+/* =========================================
+   INITIAL LOAD
+========================================= */
 
-// =========================================
-// INITIAL LOAD
-// =========================================
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
 
-document.addEventListener("DOMContentLoaded", function() {
+        loadAdminData();
 
-    loadAdminData();
-
-});
+    }
+);
