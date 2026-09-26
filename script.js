@@ -1,43 +1,32 @@
-// ==========================================
-// FIXMITRA JAVASCRIPT
-// ==========================================
+/* =====================================================
+   FIXMITRA JAVASCRIPT
+===================================================== */
 
 
-
-// ==========================================
-// CUSTOMER SEARCH
-// ==========================================
+/* =====================================================
+   SEARCH SERVICE
+===================================================== */
 
 function searchService() {
 
-    const service =
-        document
-            .getElementById("serviceSearch")
-            .value
-            .trim();
-
-
     const location =
-        document
-            .getElementById("location")
-            .value;
+        document.getElementById("location").value;
+
+    const service =
+        document.getElementById("serviceSearch").value.trim();
 
 
-    if (service === "") {
+    if (location === "") {
 
-        alert(
-            "Please enter the service you need."
-        );
+        alert("Please select your location.");
 
         return;
     }
 
 
-    if (location === "") {
+    if (service === "") {
 
-        alert(
-            "Please select your location."
-        );
+        alert("Please enter the service you need.");
 
         return;
     }
@@ -55,14 +44,13 @@ function searchService() {
 
 
 
-// ==========================================
-// GET STARTED / SERVICES
-// ==========================================
+/* =====================================================
+   GET STARTED
+===================================================== */
 
 function startService() {
 
-    document
-        .getElementById("services")
+    document.getElementById("services")
         .scrollIntoView({
             behavior: "smooth"
         });
@@ -71,24 +59,24 @@ function startService() {
 
 
 
-// ==========================================
-// CUSTOMER PROBLEM FORM
-// ==========================================
+/* =====================================================
+   CUSTOMER PROBLEM FORM
+===================================================== */
 
 function openProblemForm(serviceName) {
 
-    document
-        .getElementById("problemService")
-        .value = serviceName;
+    const overlay =
+        document.getElementById("problemOverlay");
+
+    const serviceInput =
+        document.getElementById("problemService");
 
 
-    document
-        .getElementById("problemOverlay")
-        .style.display = "flex";
+    serviceInput.value = serviceName;
 
+    overlay.classList.add("active");
 
     document.body.style.overflow = "hidden";
-
 }
 
 
@@ -97,11 +85,9 @@ function closeProblemForm() {
 
     document
         .getElementById("problemOverlay")
-        .style.display = "none";
-
+        .classList.remove("active");
 
     document.body.style.overflow = "auto";
-
 }
 
 
@@ -112,57 +98,27 @@ function submitProblem(event) {
 
 
     const service =
-        document
-            .getElementById("problemService")
-            .value;
-
+        document.getElementById("problemService").value;
 
     const name =
-        document
-            .getElementById("problemName")
-            .value
-            .trim();
-
+        document.getElementById("problemName").value.trim();
 
     const phone =
-        document
-            .getElementById("problemPhone")
-            .value
-            .trim();
-
+        document.getElementById("problemPhone").value.trim();
 
     const location =
-        document
-            .getElementById("problemLocation")
-            .value;
-
+        document.getElementById("problemLocation").value;
 
     const address =
-        document
-            .getElementById("problemAddress")
-            .value
-            .trim();
-
+        document.getElementById("problemAddress").value.trim();
 
     const description =
-        document
-            .getElementById("problemDescription")
-            .value
-            .trim();
-
-
-    const photo =
-        document
-            .getElementById("problemPhoto")
-            .files.length;
-
+        document.getElementById("problemDescription").value.trim();
 
 
     if (name === "") {
 
-        alert(
-            "Please enter your name."
-        );
+        alert("Please enter your name.");
 
         return;
     }
@@ -170,9 +126,7 @@ function submitProblem(event) {
 
     if (!/^[0-9]{10}$/.test(phone)) {
 
-        alert(
-            "Please enter a valid 10-digit mobile number."
-        );
+        alert("Please enter a valid 10 digit mobile number.");
 
         return;
     }
@@ -180,9 +134,7 @@ function submitProblem(event) {
 
     if (location === "") {
 
-        alert(
-            "Please select your location."
-        );
+        alert("Please select your location.");
 
         return;
     }
@@ -190,9 +142,7 @@ function submitProblem(event) {
 
     if (address === "") {
 
-        alert(
-            "Please enter your full address."
-        );
+        alert("Please enter your address.");
 
         return;
     }
@@ -200,51 +150,21 @@ function submitProblem(event) {
 
     if (description === "") {
 
-        alert(
-            "Please describe your problem."
-        );
+        alert("Please describe your problem.");
 
         return;
     }
 
 
-
-    let photoMessage =
-        "No photo uploaded.";
-
-
-    if (photo > 0) {
-
-        photoMessage =
-            "Photo attached.";
-
-    }
-
-
-
     alert(
+        "Problem submitted successfully! ✓\n\n" +
 
-        "Service request submitted!\n\n" +
+        "Service: " + service +
+        "\nName: " + name +
+        "\nMobile: " + phone +
+        "\nLocation: " + location +
 
-        "Service: " +
-        service +
-
-        "\nName: " +
-        name +
-
-        "\nLocation: " +
-        location +
-
-        "\nAddress: " +
-        address +
-
-        "\nProblem: " +
-        description +
-
-        "\n\n" +
-
-        photoMessage
-
+        "\n\nFixMitra will connect you with a service professional."
     );
 
 
@@ -259,9 +179,9 @@ function submitProblem(event) {
 
 
 
-// ==========================================
-// MITRA REGISTRATION
-// ==========================================
+/* =====================================================
+   MITRA REGISTRATION
+===================================================== */
 
 let mobileVerified = false;
 
@@ -273,16 +193,11 @@ let emailOTP = "";
 
 
 
-// ==========================================
-// OPEN MITRA FORM
-// ==========================================
-
 function openMitraForm() {
 
     document
         .getElementById("mitraOverlay")
-        .style.display = "flex";
-
+        .classList.add("active");
 
     document.body.style.overflow = "hidden";
 
@@ -290,16 +205,11 @@ function openMitraForm() {
 
 
 
-// ==========================================
-// CLOSE MITRA FORM
-// ==========================================
-
 function closeMitraForm() {
 
     document
         .getElementById("mitraOverlay")
-        .style.display = "none";
-
+        .classList.remove("active");
 
     document.body.style.overflow = "auto";
 
@@ -307,15 +217,15 @@ function closeMitraForm() {
 
 
 
-// ==========================================
-// SEND MOBILE OTP
-// ==========================================
+/* =====================================================
+   MOBILE OTP
+===================================================== */
 
 function sendMobileOTP() {
 
     const mobile =
         document
-            .getElementById("mobile")
+            .getElementById("mitraMobile")
             .value
             .trim();
 
@@ -323,141 +233,199 @@ function sendMobileOTP() {
     if (!/^[0-9]{10}$/.test(mobile)) {
 
         alert(
-            "Please enter a valid 10-digit mobile number."
+            "Please enter a valid 10 digit mobile number."
         );
 
         return;
     }
 
 
+    /*
+       DEMO OTP
+       Real SMS OTP will be connected with backend later.
+    */
+
     mobileOTP = "123456";
 
-    mobileVerified = false;
+
+    document
+        .getElementById("mobileStatus")
+        .textContent =
+        "Demo OTP sent. Enter 123456";
 
 
     alert(
-        "Demo Mobile OTP sent.\n\n" +
-        "Testing OTP: 123456"
+        "Demo Mobile OTP: 123456"
     );
 
 }
 
 
 
-// ==========================================
-// VERIFY MOBILE OTP
-// ==========================================
-
 function verifyMobileOTP() {
 
-    const otp =
+    const enteredOTP =
         document
             .getElementById("mobileOTP")
             .value
             .trim();
 
 
-    if (otp === mobileOTP && otp !== "") {
+    if (enteredOTP === "") {
+
+        alert("Please enter the mobile OTP.");
+
+        return;
+    }
+
+
+    if (enteredOTP === mobileOTP && mobileOTP !== "") {
 
         mobileVerified = true;
 
 
-        alert(
-            "Mobile number verified successfully! ✓"
-        );
+        document
+            .getElementById("mobileStatus")
+            .textContent =
+            "✓ Mobile number verified";
+
+
+        document
+            .getElementById("mobileStatus")
+            .style.color =
+            "#087449";
 
     } else {
 
         mobileVerified = false;
 
 
-        alert(
-            "Invalid mobile OTP."
-        );
+        document
+            .getElementById("mobileStatus")
+            .textContent =
+            "✕ Incorrect OTP";
 
+
+        document
+            .getElementById("mobileStatus")
+            .style.color =
+            "#d92d20";
     }
 
 }
 
 
 
-// ==========================================
-// SEND EMAIL VERIFICATION
-// ==========================================
+/* =====================================================
+   EMAIL VERIFICATION
+===================================================== */
 
 function sendEmailOTP() {
 
     const email =
         document
-            .getElementById("email")
+            .getElementById("mitraEmail")
             .value
             .trim();
 
 
     if (email === "") {
 
-        alert(
-            "Please enter your email address."
-        );
+        alert("Please enter your email address.");
 
         return;
     }
 
 
+    if (!email.includes("@")) {
+
+        alert("Please enter a valid email address.");
+
+        return;
+    }
+
+
+    /*
+       DEMO EMAIL CODE
+       Real email verification will be connected later.
+    */
+
     emailOTP = "654321";
 
-    emailVerified = false;
+
+    document
+        .getElementById("emailStatus")
+        .textContent =
+        "Demo verification code sent. Enter 654321";
 
 
     alert(
-        "Demo Email verification code sent.\n\n" +
-        "Testing code: 654321"
+        "Demo Email Verification Code: 654321"
     );
 
 }
 
 
 
-// ==========================================
-// VERIFY EMAIL
-// ==========================================
-
 function verifyEmailOTP() {
 
-    const otp =
+    const enteredOTP =
         document
             .getElementById("emailOTP")
             .value
             .trim();
 
 
-    if (otp === emailOTP && otp !== "") {
+    if (enteredOTP === "") {
+
+        alert(
+            "Please enter the email verification code."
+        );
+
+        return;
+    }
+
+
+    if (enteredOTP === emailOTP && emailOTP !== "") {
 
         emailVerified = true;
 
 
-        alert(
-            "Email verified successfully! ✓"
-        );
+        document
+            .getElementById("emailStatus")
+            .textContent =
+            "✓ Email verified";
+
+
+        document
+            .getElementById("emailStatus")
+            .style.color =
+            "#087449";
 
     } else {
 
         emailVerified = false;
 
 
-        alert(
-            "Invalid email verification code."
-        );
+        document
+            .getElementById("emailStatus")
+            .textContent =
+            "✕ Incorrect verification code";
 
+
+        document
+            .getElementById("emailStatus")
+            .style.color =
+            "#d92d20";
     }
 
 }
 
 
 
-// ==========================================
-// MITRA FORM SUBMIT
-// ==========================================
+/* =====================================================
+   MITRA SUBMIT
+===================================================== */
 
 function submitMitra(event) {
 
@@ -480,91 +448,70 @@ function submitMitra(event) {
 
     const mobile =
         document
-            .getElementById("mobile")
+            .getElementById("mitraMobile")
             .value
             .trim();
 
 
     const email =
         document
-            .getElementById("email")
+            .getElementById("mitraEmail")
             .value
             .trim();
 
 
     const service =
         document
-            .getElementById("service")
+            .getElementById("mitraService")
             .value;
 
 
     const location =
         document
-            .getElementById("location")
+            .getElementById("mitraLocation")
             .value;
 
 
     const address =
         document
-            .getElementById("address")
+            .getElementById("mitraAddress")
             .value
             .trim();
 
 
     const experience =
         document
-            .getElementById("experience")
+            .getElementById("mitraExperience")
             .value;
-
-
-    const shopPhoto =
-        document
-            .getElementById("shopPhoto")
-            .files.length;
 
 
     const password =
         document
-            .getElementById("password")
+            .getElementById("mitraPassword")
             .value;
 
 
     const terms =
         document
-            .getElementById("terms")
+            .getElementById("mitraTerms")
             .checked;
 
 
 
-    if (ownerName === "") {
-
-        alert(
-            "Please enter owner name."
-        );
-
-        return;
-    }
-
-
-    if (businessName === "") {
-
-        alert(
-            "Please enter business/shop name."
-        );
-
-        return;
-    }
-
+    /* MOBILE CHECK */
 
     if (!/^[0-9]{10}$/.test(mobile)) {
 
         alert(
-            "Please enter a valid 10-digit mobile number."
+            "Please enter a valid 10 digit mobile number."
         );
 
         return;
     }
 
+
+
+    /* MOBILE VERIFICATION */
 
     if (!mobileVerified) {
 
@@ -576,15 +523,8 @@ function submitMitra(event) {
     }
 
 
-    if (email === "") {
 
-        alert(
-            "Please enter your email."
-        );
-
-        return;
-    }
-
+    /* EMAIL VERIFICATION */
 
     if (!emailVerified) {
 
@@ -596,55 +536,30 @@ function submitMitra(event) {
     }
 
 
-    if (service === "") {
+
+    /* REQUIRED DATA */
+
+    if (
+        ownerName === "" ||
+        businessName === "" ||
+        email === "" ||
+        service === "" ||
+        location === "" ||
+        address === "" ||
+        experience === "" ||
+        password === ""
+    ) {
 
         alert(
-            "Please select your service."
+            "Please complete all required fields."
         );
 
         return;
     }
 
 
-    if (location === "") {
 
-        alert(
-            "Please select your location."
-        );
-
-        return;
-    }
-
-
-    if (address === "") {
-
-        alert(
-            "Please enter your full address."
-        );
-
-        return;
-    }
-
-
-    if (experience === "") {
-
-        alert(
-            "Please select your experience."
-        );
-
-        return;
-    }
-
-
-    if (shopPhoto === 0) {
-
-        alert(
-            "Please upload your shop photo."
-        );
-
-        return;
-    }
-
+    /* PASSWORD */
 
     if (password.length < 6) {
 
@@ -655,6 +570,9 @@ function submitMitra(event) {
         return;
     }
 
+
+
+    /* TERMS */
 
     if (!terms) {
 
@@ -667,9 +585,10 @@ function submitMitra(event) {
 
 
 
-    alert(
+    /* SUCCESS */
 
-        "Mitra registration submitted successfully! ✓\n\n" +
+    alert(
+        "🎉 Registration Submitted Successfully!\n\n" +
 
         "Business: " +
         businessName +
@@ -682,8 +601,7 @@ function submitMitra(event) {
 
         "\n\nStatus: PENDING\n\n" +
 
-        "Your registration will be reviewed by FixMitra Admin."
-
+        "Your shop registration will be reviewed by FixMitra Admin."
     );
 
 
@@ -701,22 +619,32 @@ function submitMitra(event) {
 
     emailOTP = "";
 
+
+    document
+        .getElementById("mobileStatus")
+        .textContent = "";
+
+
+    document
+        .getElementById("emailStatus")
+        .textContent = "";
+
+
     closeMitraForm();
 
 }
 
 
 
-// ==========================================
-// LOGIN
-// ==========================================
+/* =====================================================
+   LOGIN
+===================================================== */
 
 function openLogin() {
 
     document
         .getElementById("loginOverlay")
-        .style.display = "flex";
-
+        .classList.add("active");
 
     document.body.style.overflow = "hidden";
 
@@ -728,8 +656,7 @@ function closeLogin() {
 
     document
         .getElementById("loginOverlay")
-        .style.display = "none";
-
+        .classList.remove("active");
 
     document.body.style.overflow = "auto";
 
@@ -742,34 +669,33 @@ function submitLogin(event) {
     event.preventDefault();
 
 
-    const name =
+    const mobile =
         document
-            .getElementById("loginName")
+            .getElementById("loginMobile")
             .value
             .trim();
 
 
-    const phone =
+    const password =
         document
-            .getElementById("loginPhone")
-            .value
-            .trim();
+            .getElementById("loginPassword")
+            .value;
 
 
-    if (name === "") {
+    if (!/^[0-9]{10}$/.test(mobile)) {
 
         alert(
-            "Please enter your name."
+            "Please enter a valid 10 digit mobile number."
         );
 
         return;
     }
 
 
-    if (!/^[0-9]{10}$/.test(phone)) {
+    if (password.length < 6) {
 
         alert(
-            "Please enter a valid 10-digit mobile number."
+            "Password must be at least 6 characters."
         );
 
         return;
@@ -777,9 +703,8 @@ function submitLogin(event) {
 
 
     alert(
-        "Welcome " +
-        name +
-        "! Your FixMitra account request has been received."
+        "Welcome to FixMitra! ✓\n\n" +
+        "Login demo completed successfully."
     );
 
 
@@ -794,69 +719,49 @@ function submitLogin(event) {
 
 
 
-// ==========================================
-// CLOSE MITRA POPUP BY CLICKING OUTSIDE
-// ==========================================
+/* =====================================================
+   CLOSE POPUPS WHEN CLICKING OUTSIDE
+===================================================== */
 
-document
-    .getElementById("mitraOverlay")
-    .addEventListener(
-        "click",
-        function(event) {
+document.addEventListener(
+    "click",
+    function(event) {
 
-            if (
-                event.target === this
-            ) {
+        const problemOverlay =
+            document.getElementById("problemOverlay");
 
-                closeMitraForm();
+        const mitraOverlay =
+            document.getElementById("mitraOverlay");
 
-            }
-
-        }
-    );
+        const loginOverlay =
+            document.getElementById("loginOverlay");
 
 
+        if (
+            event.target === problemOverlay
+        ) {
 
-// ==========================================
-// CLOSE CUSTOMER POPUP BY CLICKING OUTSIDE
-// ==========================================
-
-document
-    .getElementById("problemOverlay")
-    .addEventListener(
-        "click",
-        function(event) {
-
-            if (
-                event.target === this
-            ) {
-
-                closeProblemForm();
-
-            }
+            closeProblemForm();
 
         }
-    );
 
 
+        if (
+            event.target === mitraOverlay
+        ) {
 
-// ==========================================
-// CLOSE LOGIN POPUP BY CLICKING OUTSIDE
-// ==========================================
-
-document
-    .getElementById("loginOverlay")
-    .addEventListener(
-        "click",
-        function(event) {
-
-            if (
-                event.target === this
-            ) {
-
-                closeLogin();
-
-            }
+            closeMitraForm();
 
         }
-    );
+
+
+        if (
+            event.target === loginOverlay
+        ) {
+
+            closeLogin();
+
+        }
+
+    }
+);
