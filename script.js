@@ -1,38 +1,39 @@
-// FixMitra JavaScript
+function searchService() {
 
-// Find a Service button
-const serviceButton = document.querySelector("#home button");
+    const service = document.getElementById("serviceSearch").value;
+    const location = document.getElementById("location").value;
 
-serviceButton.addEventListener("click", function () {
-    document.querySelector("#services").scrollIntoView({
+    if (service === "") {
+        alert("Please enter the service you need.");
+        return;
+    }
+
+    if (location === "") {
+        alert("Please select your location.");
+        return;
+    }
+
+    alert(
+        "Searching for " +
+        service +
+        " services in " +
+        location +
+        "..."
+    );
+}
+
+
+function startService() {
+
+    document.getElementById("services").scrollIntoView({
         behavior: "smooth"
     });
-});
+
+}
 
 
-// Get Started button
-const contactButton = document.querySelector("#contact button");
+document.querySelector(".login-btn").addEventListener("click", function () {
 
-contactButton.addEventListener("click", function () {
-    alert("Welcome to FixMitra! Your service journey starts here.");
-});
-
-
-// Service cards
-const serviceCards = document.querySelectorAll("#services div");
-
-serviceCards.forEach(function (card) {
-
-    card.addEventListener("click", function () {
-
-        const serviceName = card.querySelector("h3").textContent;
-
-        alert(
-            "You selected " +
-            serviceName +
-            ". We will help you find a professional."
-        );
-
-    });
+    alert("Login and Sign Up feature will be available soon.");
 
 });
