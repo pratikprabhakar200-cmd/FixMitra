@@ -5,15 +5,20 @@
 function searchService() {
 
     const service =
-        document.getElementById("serviceSearch").value.trim();
+        document.getElementById("serviceSearch")
+        .value
+        .trim();
 
     const location =
-        document.getElementById("location").value;
+        document.getElementById("location")
+        .value;
 
 
     if (service === "") {
 
-        alert("Please enter the service you need.");
+        alert(
+            "Please enter the service you need."
+        );
 
         return;
     }
@@ -21,7 +26,9 @@ function searchService() {
 
     if (location === "") {
 
-        alert("Please select your location.");
+        alert(
+            "Please select your location."
+        );
 
         return;
     }
@@ -36,6 +43,7 @@ function searchService() {
     );
 
 }
+
 
 
 /* =========================
@@ -55,16 +63,258 @@ function startService() {
 }
 
 
+
+/* =========================
+   OPEN PROBLEM FORM
+========================= */
+
+function openProblemForm(serviceName) {
+
+    const overlay =
+        document.getElementById(
+            "problemOverlay"
+        );
+
+    const serviceInput =
+        document.getElementById(
+            "problemService"
+        );
+
+
+    serviceInput.value = serviceName;
+
+
+    overlay.style.display = "flex";
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+
+/* =========================
+   CLOSE PROBLEM FORM
+========================= */
+
+function closeProblemForm() {
+
+    const overlay =
+        document.getElementById(
+            "problemOverlay"
+        );
+
+
+    overlay.style.display = "none";
+
+
+    document.body.style.overflow =
+        "auto";
+
+}
+
+
+
+/* =========================
+   SUBMIT PROBLEM
+========================= */
+
+function submitProblem(event) {
+
+    event.preventDefault();
+
+
+    const service =
+        document.getElementById(
+            "problemService"
+        ).value.trim();
+
+
+    const name =
+        document.getElementById(
+            "problemName"
+        ).value.trim();
+
+
+    const phone =
+        document.getElementById(
+            "problemPhone"
+        ).value.trim();
+
+
+    const location =
+        document.getElementById(
+            "problemLocation"
+        ).value;
+
+
+    const description =
+        document.getElementById(
+            "problemDescription"
+        ).value.trim();
+
+
+    const photo =
+        document.getElementById(
+            "problemPhoto"
+        );
+
+
+
+    /* =========================
+       VALIDATION
+    ========================= */
+
+    if (name === "") {
+
+        alert(
+            "Please enter your name."
+        );
+
+        return;
+
+    }
+
+
+
+    if (phone === "") {
+
+        alert(
+            "Please enter your mobile number."
+        );
+
+        return;
+
+    }
+
+
+
+    if (!/^[0-9]{10}$/.test(phone)) {
+
+        alert(
+            "Please enter a valid 10-digit mobile number."
+        );
+
+        return;
+
+    }
+
+
+
+    if (location === "") {
+
+        alert(
+            "Please select your location."
+        );
+
+        return;
+
+    }
+
+
+
+    if (description === "") {
+
+        alert(
+            "Please describe your problem."
+        );
+
+        return;
+
+    }
+
+
+
+    /* =========================
+       PHOTO MESSAGE
+    ========================= */
+
+    let photoMessage =
+        "No photo attached.";
+
+
+    if (
+        photo.files &&
+        photo.files.length > 0
+    ) {
+
+        photoMessage =
+            "Photo attached.";
+
+    }
+
+
+
+    /* =========================
+       SUCCESS MESSAGE
+    ========================= */
+
+    alert(
+        "Service request submitted successfully!\n\n" +
+
+        "Service: " +
+        service +
+        "\n" +
+
+        "Name: " +
+        name +
+        "\n" +
+
+        "Location: " +
+        location +
+        "\n\n" +
+
+        photoMessage
+    );
+
+
+
+    /* =========================
+       RESET FORM
+    ========================= */
+
+    document
+        .getElementById("problemForm")
+        .reset();
+
+
+    document
+        .getElementById("problemService")
+        .value = "";
+
+
+    closeProblemForm();
+
+}
+
+
+
 /* =========================
    LOGIN / SIGN UP
 ========================= */
 
 function openLogin() {
 
+    const existingLogin =
+        document.querySelector(
+            ".login-overlay"
+        );
+
+
+    if (existingLogin) {
+
+        return;
+
+    }
+
+
     const loginWindow =
         document.createElement("div");
 
-    loginWindow.className = "login-overlay";
+
+    loginWindow.className =
+        "login-overlay";
 
 
     loginWindow.innerHTML = `
@@ -73,13 +323,17 @@ function openLogin() {
 
             <button
                 class="close-login"
+                type="button"
                 onclick="closeLogin()"
             >
                 ×
             </button>
 
 
-            <h2>Welcome to FixMitra</h2>
+            <h2>
+                Welcome to FixMitra
+            </h2>
+
 
             <p class="login-subtitle">
                 Login or create your account
@@ -97,11 +351,13 @@ function openLogin() {
                 type="tel"
                 id="loginPhone"
                 placeholder="Enter mobile number"
+                maxlength="10"
             >
 
 
             <button
                 class="login-submit"
+                type="button"
                 onclick="submitLogin()"
             >
                 Continue
@@ -109,8 +365,8 @@ function openLogin() {
 
 
             <p class="login-note">
-                By continuing, you agree to FixMitra
-                Terms & Privacy Policy.
+                By continuing, you agree to
+                FixMitra Terms & Privacy Policy.
             </p>
 
         </div>
@@ -118,9 +374,16 @@ function openLogin() {
     `;
 
 
-    document.body.appendChild(loginWindow);
+    document.body.appendChild(
+        loginWindow
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
 
 }
+
 
 
 /* =========================
@@ -130,7 +393,9 @@ function openLogin() {
 function closeLogin() {
 
     const loginWindow =
-        document.querySelector(".login-overlay");
+        document.querySelector(
+            ".login-overlay"
+        );
 
 
     if (loginWindow) {
@@ -139,7 +404,12 @@ function closeLogin() {
 
     }
 
+
+    document.body.style.overflow =
+        "auto";
+
 }
+
 
 
 /* =========================
@@ -149,31 +419,43 @@ function closeLogin() {
 function submitLogin() {
 
     const name =
-        document.getElementById("loginName").value.trim();
+        document.getElementById(
+            "loginName"
+        ).value.trim();
+
 
     const phone =
-        document.getElementById("loginPhone").value.trim();
+        document.getElementById(
+            "loginPhone"
+        ).value.trim();
+
 
 
     if (name === "") {
 
-        alert("Please enter your name.");
+        alert(
+            "Please enter your name."
+        );
 
         return;
 
     }
+
 
 
     if (phone === "") {
 
-        alert("Please enter your mobile number.");
+        alert(
+            "Please enter your mobile number."
+        );
 
         return;
 
     }
 
 
-    if (phone.length !== 10) {
+
+    if (!/^[0-9]{10}$/.test(phone)) {
 
         alert(
             "Please enter a valid 10-digit mobile number."
@@ -182,6 +464,7 @@ function submitLogin() {
         return;
 
     }
+
 
 
     alert(
@@ -196,12 +479,15 @@ function submitLogin() {
 }
 
 
+
 /* =========================
    LOGIN BUTTON
 ========================= */
 
 const loginButton =
-    document.querySelector(".login-btn");
+    document.querySelector(
+        ".login-btn"
+    );
 
 
 if (loginButton) {
@@ -209,6 +495,39 @@ if (loginButton) {
     loginButton.addEventListener(
         "click",
         openLogin
+    );
+
+}
+
+
+
+/* =========================
+   CLOSE PROBLEM POPUP
+   BY CLICKING OUTSIDE
+========================= */
+
+const problemOverlay =
+    document.getElementById(
+        "problemOverlay"
+    );
+
+
+if (problemOverlay) {
+
+    problemOverlay.addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target ===
+                problemOverlay
+            ) {
+
+                closeProblemForm();
+
+            }
+
+        }
     );
 
 }
