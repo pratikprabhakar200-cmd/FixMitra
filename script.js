@@ -1,146 +1,47 @@
-// ================================
-// MITRA REGISTRATION
-// ================================
+// ======================================
+// FIXMITRA MITRA REGISTRATION
+// JAVASCRIPT
+// ======================================
 
 
-function openMitraForm() {
+// Mobile verification status
 
-    const overlay =
-        document.getElementById("mitraOverlay");
-
-    overlay.style.display = "flex";
-
-    document.body.style.overflow = "hidden";
-
-}
+let mobileVerified = false;
 
 
+// Email verification status
 
-function closeMitraForm() {
+let emailVerified = false;
 
-    const overlay =
-        document.getElementById("mitraOverlay");
 
-    overlay.style.display = "none";
+// Demo OTP values
 
-    document.body.style.overflow = "auto";
-
-}
+let mobileOTP = "";
+let emailOTP = "";
 
 
 
-// ================================
-// SUBMIT MITRA REGISTRATION
-// ================================
+// ======================================
+// SEND MOBILE OTP
+// ======================================
+
+function sendMobileOTP() {
+
+    const mobile =
+        document.getElementById("mobile").value.trim();
 
 
-function submitMitra(event) {
-
-    event.preventDefault();
-
-
-    // GET FORM VALUES
-
-    const ownerName =
-        document.getElementById(
-            "ownerName"
-        ).value.trim();
-
-
-    const businessName =
-        document.getElementById(
-            "businessName"
-        ).value.trim();
-
-
-    const phone =
-        document.getElementById(
-            "mitraPhone"
-        ).value.trim();
-
-
-    const email =
-        document.getElementById(
-            "mitraEmail"
-        ).value.trim();
-
-
-    const service =
-        document.getElementById(
-            "mitraService"
-        ).value;
-
-
-    const location =
-        document.getElementById(
-            "mitraLocation"
-        ).value;
-
-
-    const address =
-        document.getElementById(
-            "mitraAddress"
-        ).value.trim();
-
-
-    const experience =
-        document.getElementById(
-            "mitraExperience"
-        ).value;
-
-
-    const password =
-        document.getElementById(
-            "mitraPassword"
-        ).value;
-
-
-    const terms =
-        document.getElementById(
-            "mitraTerms"
-        ).checked;
-
-
-
-    // ================================
-    // VALIDATION
-    // ================================
-
-
-    if (ownerName === "") {
+    if (mobile === "") {
 
         alert(
-            "Please enter owner name."
+            "Please enter your mobile number."
         );
 
         return;
     }
 
 
-
-    if (businessName === "") {
-
-        alert(
-            "Please enter business name."
-        );
-
-        return;
-    }
-
-
-
-    if (phone === "") {
-
-        alert(
-            "Please enter mobile number."
-        );
-
-        return;
-    }
-
-
-
-    if (!/^[0-9]{10}$/.test(phone)) {
+    if (!/^[0-9]{10}$/.test(mobile)) {
 
         alert(
             "Please enter a valid 10-digit mobile number."
@@ -150,138 +51,412 @@ function submitMitra(event) {
     }
 
 
+    // Demo OTP
 
-    if (email === "") {
-
-        alert(
-            "Please enter your email."
-        );
-
-        return;
-    }
+    mobileOTP = "123456";
 
 
-
-    if (service === "") {
-
-        alert(
-            "Please select your service."
-        );
-
-        return;
-    }
-
-
-
-    if (location === "") {
-
-        alert(
-            "Please select your location."
-        );
-
-        return;
-    }
-
-
-
-    if (address === "") {
-
-        alert(
-            "Please enter your business address."
-        );
-
-        return;
-    }
-
-
-
-    if (experience === "") {
-
-        alert(
-            "Please select your experience."
-        );
-
-        return;
-    }
-
-
-
-    if (password.length < 6) {
-
-        alert(
-            "Password must be at least 6 characters."
-        );
-
-        return;
-    }
-
-
-
-    if (!terms) {
-
-        alert(
-            "Please accept the terms and conditions."
-        );
-
-        return;
-    }
-
-
-
-    // ================================
-    // SUCCESS MESSAGE
-    // ================================
+    mobileVerified = false;
 
 
     alert(
-        "Mitra registration successful!\n\n" +
-
-        "Business: " +
-        businessName +
-
-        "\nService: " +
-        service +
-
-        "\nLocation: " +
-        location +
-
-        "\n\nWelcome to FixMitra!"
+        "Demo Mobile OTP sent.\n\n" +
+        "For testing use OTP: 123456"
     );
-
-
-
-    // RESET FORM
-
-    document.getElementById(
-        "mitraForm"
-    ).reset();
-
-
-    closeMitraForm();
 
 }
 
 
 
-// ================================
-// CLOSE POPUP BY CLICKING OUTSIDE
-// ================================
+// ======================================
+// VERIFY MOBILE OTP
+// ======================================
 
+function verifyMobileOTP() {
+
+    const enteredOTP =
+        document.getElementById("mobileOTP").value.trim();
+
+
+    if (enteredOTP === "") {
+
+        alert(
+            "Please enter the mobile OTP."
+        );
+
+        return;
+    }
+
+
+    if (enteredOTP === mobileOTP) {
+
+        mobileVerified = true;
+
+
+        alert(
+            "Mobile number verified successfully! ✓"
+        );
+
+    } else {
+
+        mobileVerified = false;
+
+
+        alert(
+            "Invalid mobile OTP."
+        );
+
+    }
+
+}
+
+
+
+// ======================================
+// SEND EMAIL VERIFICATION
+// ======================================
+
+function sendEmailOTP() {
+
+    const email =
+        document.getElementById("email").value.trim();
+
+
+    if (email === "") {
+
+        alert(
+            "Please enter your email address."
+        );
+
+        return;
+    }
+
+
+    // Demo email OTP
+
+    emailOTP = "654321";
+
+
+    emailVerified = false;
+
+
+    alert(
+        "Demo Email Verification Code sent.\n\n" +
+        "For testing use code: 654321"
+    );
+
+}
+
+
+
+// ======================================
+// VERIFY EMAIL
+// ======================================
+
+function verifyEmailOTP() {
+
+    const enteredOTP =
+        document.getElementById("emailOTP").value.trim();
+
+
+    if (enteredOTP === "") {
+
+        alert(
+            "Please enter the email verification code."
+        );
+
+        return;
+    }
+
+
+    if (enteredOTP === emailOTP) {
+
+        emailVerified = true;
+
+
+        alert(
+            "Email verified successfully! ✓"
+        );
+
+    } else {
+
+        emailVerified = false;
+
+
+        alert(
+            "Invalid email verification code."
+        );
+
+    }
+
+}
+
+
+
+// ======================================
+// MITRA REGISTRATION
+// ======================================
 
 document
-    .getElementById("mitraOverlay")
+    .getElementById("mitraForm")
     .addEventListener(
-        "click",
+        "submit",
         function(event) {
 
-            if (
-                event.target ===
-                this
-            ) {
+            event.preventDefault();
 
-                closeMitraForm();
 
+            // Get form values
+
+            const ownerName =
+                document
+                    .getElementById("ownerName")
+                    .value
+                    .trim();
+
+
+            const businessName =
+                document
+                    .getElementById("businessName")
+                    .value
+                    .trim();
+
+
+            const mobile =
+                document
+                    .getElementById("mobile")
+                    .value
+                    .trim();
+
+
+            const email =
+                document
+                    .getElementById("email")
+                    .value
+                    .trim();
+
+
+            const service =
+                document
+                    .getElementById("service")
+                    .value;
+
+
+            const location =
+                document
+                    .getElementById("location")
+                    .value;
+
+
+            const address =
+                document
+                    .getElementById("address")
+                    .value
+                    .trim();
+
+
+            const experience =
+                document
+                    .getElementById("experience")
+                    .value;
+
+
+            const shopPhoto =
+                document
+                    .getElementById("shopPhoto")
+                    .files.length;
+
+
+            const password =
+                document
+                    .getElementById("password")
+                    .value;
+
+
+            const terms =
+                document
+                    .getElementById("terms")
+                    .checked;
+
+
+
+            // ==================================
+            // BASIC VALIDATION
+            // ==================================
+
+
+            if (ownerName === "") {
+
+                alert(
+                    "Please enter owner name."
+                );
+
+                return;
             }
 
-        }
-    );
+
+            if (businessName === "") {
+
+                alert(
+                    "Please enter business/shop name."
+                );
+
+                return;
+            }
+
+
+            if (!/^[0-9]{10}$/.test(mobile)) {
+
+                alert(
+                    "Please enter a valid 10-digit mobile number."
+                );
+
+                return;
+            }
+
+
+            if (!mobileVerified) {
+
+                alert(
+                    "Please verify your mobile number first."
+                );
+
+                return;
+            }
+
+
+            if (email === "") {
+
+                alert(
+                    "Please enter your email."
+                );
+
+                return;
+            }
+
+
+            if (!emailVerified) {
+
+                alert(
+                    "Please verify your email first."
+                );
+
+                return;
+            }
+
+
+            if (service === "") {
+
+                alert(
+                    "Please select your service."
+                );
+
+                return;
+            }
+
+
+            if (location === "") {
+
+                alert(
+                    "Please select your location."
+                );
+
+                return;
+            }
+
+
+            if (address === "") {
+
+                alert(
+                    "Please enter your full address."
+                );
+
+                return;
+            }
+
+
+            if (experience === "") {
+
+                alert(
+                    "Please select your experience."
+                );
+
+                return;
+            }
+
+
+            if (shopPhoto === 0) {
+
+                alert(
+                    "Please upload your shop photo."
+                );
+
+                return;
+            }
+
+
+            if (password.length < 6) {
+
+                alert(
+                    "Password must be at least 6 characters."
+                );
+
+                return;
+            }
+
+
+            if (!terms) {
+
+                alert(
+                    "Please accept the terms and conditions."
+                );
+
+                return;
+            }
+
+
+
+            // ==================================
+            // REGISTRATION SUCCESS
+            // ==================================
+
+
+            alert(
+
+                "Registration submitted successfully! ✓\n\n" +
+
+                "Business: " +
+                businessName +
+
+                "\nService: " +
+                service +
+
+                "\nLocation: " +
+                location +
+
+                "\n\n" +
+
+                "Status: PENDING\n\n" +
+
+                "Your registration will be reviewed by FixMitra Admin."
+
+            );
+
+
+
+            // Reset form
+
+            document
+                .getElementById("mitraForm")
+                .reset();
+
+
+            mobileVerified = false;
+
+            emailVerified = false;
+
+            mobileOTP = "";
+
+            emailOTP = "";
+
+        });
