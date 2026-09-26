@@ -8,7 +8,9 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>FixMitra - Mitra Registration</title>
+    <title>
+        FixMitra | Local Services, Made Easy
+    </title>
 
     <link rel="stylesheet"
           href="style.css">
@@ -19,32 +21,1037 @@
 <body>
 
 
-    <header>
+    <!-- =========================
+         HEADER
+    ========================== -->
 
-        <h1>FixMitra</h1>
+    <header class="header">
 
-        <p>Local Services, Made Easy</p>
+        <div class="logo">
+
+            <h2>FixMitra</h2>
+
+            <span>
+                Local Services, Made Easy
+            </span>
+
+        </div>
+
+
+        <nav>
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#services">
+                Services
+            </a>
+
+            <a href="#how-it-works">
+                How It Works
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
+        </nav>
+
+
+        <div class="header-buttons">
+
+            <button
+                class="shop-button"
+                onclick="openMitraForm()">
+
+                🏪 Shop Registration
+
+            </button>
+
+
+            <button
+                class="login-btn"
+                onclick="openLogin()">
+
+                Login / Sign Up
+
+            </button>
+
+        </div>
 
     </header>
 
 
 
-    <main>
+    <!-- =========================
+         HERO
+    ========================== -->
 
-        <section class="registration-box">
+    <section
+        class="hero"
+        id="home">
 
-            <h2>Join as a Mitra</h2>
 
-            <p>
-                Register your shop or service business
-                with FixMitra.
+        <div class="hero-content">
+
+
+            <p class="small-title">
+                TRUSTED LOCAL SERVICES
             </p>
 
 
-            <form id="mitraForm">
+            <h1>
+                Find the Right
+                Service Near You
+            </h1>
 
 
-                <!-- OWNER NAME -->
+            <p class="hero-description">
+
+                Find trusted local professionals
+                for your home and business needs.
+
+            </p>
+
+
+
+            <!-- SEARCH -->
+
+            <div class="search-box">
+
+
+                <select id="location">
+
+                    <option value="">
+                        Select Location
+                    </option>
+
+                    <option value="Gurugram">
+                        Gurugram
+                    </option>
+
+                    <option value="Delhi">
+                        Delhi
+                    </option>
+
+                    <option value="Noida">
+                        Noida
+                    </option>
+
+                    <option value="Faridabad">
+                        Faridabad
+                    </option>
+
+                </select>
+
+
+
+                <input
+                    type="text"
+                    id="serviceSearch"
+                    placeholder="What service do you need?">
+
+
+
+                <button
+                    onclick="searchService()">
+
+                    Search
+
+                </button>
+
+            </div>
+
+
+
+            <div class="trust-features">
+
+                <span>
+                    ✓ Verified Professionals
+                </span>
+
+                <span>
+                    ✓ Local Services
+                </span>
+
+                <span>
+                    ✓ Easy Booking
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SERVICES
+    ========================== -->
+
+    <section
+        class="services"
+        id="services">
+
+
+        <div class="section-title">
+
+            <p>
+                OUR SERVICES
+            </p>
+
+            <h2>
+                What Service Do You Need?
+            </h2>
+
+        </div>
+
+
+
+        <div class="service-grid">
+
+
+            <div
+                class="service-card"
+                onclick="openProblemForm('Electrician')">
+
+                <div class="service-icon">
+                    ⚡
+                </div>
+
+                <h3>
+                    Electrician
+                </h3>
+
+                <p>
+                    Electrical repair and installation
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="service-card"
+                onclick="openProblemForm('Plumber')">
+
+                <div class="service-icon">
+                    🔧
+                </div>
+
+                <h3>
+                    Plumber
+                </h3>
+
+                <p>
+                    Plumbing repair and maintenance
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="service-card"
+                onclick="openProblemForm('AC Repair')">
+
+                <div class="service-icon">
+                    ❄️
+                </div>
+
+                <h3>
+                    AC Repair
+                </h3>
+
+                <p>
+                    AC service and repair
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="service-card"
+                onclick="openProblemForm('RO Service')">
+
+                <div class="service-icon">
+                    💧
+                </div>
+
+                <h3>
+                    RO Service
+                </h3>
+
+                <p>
+                    RO repair and installation
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="service-card"
+                onclick="openProblemForm('Carpenter')">
+
+                <div class="service-icon">
+                    🪚
+                </div>
+
+                <h3>
+                    Carpenter
+                </h3>
+
+                <p>
+                    Furniture and wood work
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="service-card"
+                onclick="openProblemForm('Cleaning')">
+
+                <div class="service-icon">
+                    🧹
+                </div>
+
+                <h3>
+                    Cleaning
+                </h3>
+
+                <p>
+                    Home and office cleaning
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="service-card"
+                onclick="openProblemForm('Home Repair')">
+
+                <div class="service-icon">
+                    🏠
+                </div>
+
+                <h3>
+                    Home Repair
+                </h3>
+
+                <p>
+                    General home repair services
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="service-card"
+                onclick="openProblemForm('Computer Repair')">
+
+                <div class="service-icon">
+                    💻
+                </div>
+
+                <h3>
+                    Computer Repair
+                </h3>
+
+                <p>
+                    Computer and laptop repair
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="service-card"
+                onclick="openProblemForm('Appliance Repair')">
+
+                <div class="service-icon">
+                    🔌
+                </div>
+
+                <h3>
+                    Appliance Repair
+                </h3>
+
+                <p>
+                    Home appliance repair
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="service-card"
+                onclick="openProblemForm('Painter')">
+
+                <div class="service-icon">
+                    🎨
+                </div>
+
+                <h3>
+                    Painter
+                </h3>
+
+                <p>
+                    Home and office painting
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- GENERAL REQUEST -->
+
+        <div class="problem-block">
+
+            <h2>
+                Can't find your exact service?
+            </h2>
+
+            <p>
+                Tell us what problem you have
+                and we'll help you find the right professional.
+            </p>
+
+
+            <button
+                onclick="openProblemForm('General Service')">
+
+                Post Your Problem
+
+            </button>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         HOW IT WORKS
+    ========================== -->
+
+    <section
+        class="how-it-works"
+        id="how-it-works">
+
+
+        <div class="section-title">
+
+            <p>
+                SIMPLE PROCESS
+            </p>
+
+            <h2>
+                How FixMitra Works
+            </h2>
+
+        </div>
+
+
+
+        <div class="steps">
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    1
+                </div>
+
+                <h3>
+                    Post Your Problem
+                </h3>
+
+                <p>
+                    Tell us what service you need.
+                </p>
+
+            </div>
+
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    2
+                </div>
+
+                <h3>
+                    Get Quotes
+                </h3>
+
+                <p>
+                    Nearby Mitras can send you their quotes.
+                </p>
+
+            </div>
+
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    3
+                </div>
+
+                <h3>
+                    Choose a Mitra
+                </h3>
+
+                <p>
+                    Compare the available options.
+                </p>
+
+            </div>
+
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    4
+                </div>
+
+                <h3>
+                    Get Your Work Done
+                </h3>
+
+                <p>
+                    Book and complete your service.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         WHY FIXMITRA
+    ========================== -->
+
+    <section class="why-fixmitra">
+
+
+        <div class="section-title">
+
+            <p>
+                WHY FIXMITRA
+            </p>
+
+            <h2>
+                Services You Can Trust
+            </h2>
+
+        </div>
+
+
+
+        <div class="why-grid">
+
+
+            <div class="why-card">
+
+                <div>
+                    ✓
+                </div>
+
+                <h3>
+                    Verified Mitras
+                </h3>
+
+                <p>
+                    Service providers are reviewed
+                    before approval.
+                </p>
+
+            </div>
+
+
+
+            <div class="why-card">
+
+                <div>
+                    📍
+                </div>
+
+                <h3>
+                    Local Professionals
+                </h3>
+
+                <p>
+                    Find service providers near you.
+                </p>
+
+            </div>
+
+
+
+            <div class="why-card">
+
+                <div>
+                    💬
+                </div>
+
+                <h3>
+                    Compare Quotes
+                </h3>
+
+                <p>
+                    Receive quotes and choose
+                    the service you need.
+                </p>
+
+            </div>
+
+
+
+            <div class="why-card">
+
+                <div>
+                    ⭐
+                </div>
+
+                <h3>
+                    Reviews
+                </h3>
+
+                <p>
+                    Build trust through customer reviews.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         ABOUT
+    ========================== -->
+
+    <section
+        class="about"
+        id="about">
+
+
+        <div class="about-content">
+
+            <p class="small-title">
+                ABOUT FIXMITRA
+            </p>
+
+            <h2>
+                Local Services,
+                Made Easy
+            </h2>
+
+            <p>
+
+                FixMitra connects customers with
+                local service professionals.
+
+                From electricians and plumbers
+                to RO service and AC repair,
+                customers can find the right
+                professional for their needs.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         MITRA CTA
+    ========================== -->
+
+    <section class="mitra-cta">
+
+
+        <div>
+
+            <h2>
+                Are You a Service Professional?
+            </h2>
+
+            <p>
+                Register your shop with FixMitra
+                and connect with local customers.
+            </p>
+
+        </div>
+
+
+        <button
+            onclick="openMitraForm()">
+
+            🏪 Register Your Shop
+
+        </button>
+
+    </section>
+
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section
+        class="contact-section"
+        id="contact">
+
+
+        <h2>
+            Contact FixMitra
+        </h2>
+
+        <p>
+            Gurugram, Haryana
+        </p>
+
+        <p>
+            📞 +91 7042703848
+        </p>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="footer-column">
+
+            <h2>
+                FixMitra
+            </h2>
+
+            <p>
+                Local Services, Made Easy
+            </p>
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+            <h3>
+                Quick Links
+            </h3>
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#services">
+                Services
+            </a>
+
+            <a href="#how-it-works">
+                How It Works
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+            <h3>
+                Popular Services
+            </h3>
+
+            <a onclick="openProblemForm('Electrician')">
+                Electrician
+            </a>
+
+            <a onclick="openProblemForm('Plumber')">
+                Plumber
+            </a>
+
+            <a onclick="openProblemForm('AC Repair')">
+                AC Repair
+            </a>
+
+            <a onclick="openProblemForm('RO Service')">
+                RO Service
+            </a>
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+            <h3>
+                For Shops
+            </h3>
+
+            <a onclick="openMitraForm()">
+                🏪 Shop Registration
+            </a>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 FixMitra. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- ==================================================
+         CUSTOMER PROBLEM FORM
+    =================================================== -->
+
+    <div
+        class="problem-overlay"
+        id="problemOverlay">
+
+
+        <div class="problem-box">
+
+
+            <button
+                class="close-problem"
+                onclick="closeProblemForm()">
+
+                ×
+
+            </button>
+
+
+            <div class="problem-header">
+
+                <h2>
+                    Post Your Problem
+                </h2>
+
+                <p>
+                    Tell us what service you need.
+                </p>
+
+            </div>
+
+
+
+            <form
+                id="problemForm"
+                onsubmit="submitProblem(event)">
+
+
+                <label>
+                    Service
+                </label>
+
+                <input
+                    type="text"
+                    id="problemService"
+                    readonly>
+
+
+
+                <label>
+                    Name
+                </label>
+
+                <input
+                    type="text"
+                    id="problemName"
+                    placeholder="Enter your name"
+                    required>
+
+
+
+                <label>
+                    Mobile Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="problemPhone"
+                    placeholder="Enter 10-digit mobile number"
+                    maxlength="10"
+                    required>
+
+
+
+                <label>
+                    Location
+                </label>
+
+                <select
+                    id="problemLocation"
+                    required>
+
+                    <option value="">
+                        Select Location
+                    </option>
+
+                    <option>
+                        Gurugram
+                    </option>
+
+                    <option>
+                        Delhi
+                    </option>
+
+                    <option>
+                        Noida
+                    </option>
+
+                    <option>
+                        Faridabad
+                    </option>
+
+                </select>
+
+
+
+                <label>
+                    Address
+                </label>
+
+                <textarea
+                    id="problemAddress"
+                    rows="2"
+                    placeholder="Enter your full address"
+                    required></textarea>
+
+
+
+                <label>
+                    Describe Your Problem
+                </label>
+
+                <textarea
+                    id="problemDescription"
+                    rows="4"
+                    placeholder="Example: My fan is not working."
+                    required></textarea>
+
+
+
+                <label>
+                    Upload Photo
+                </label>
+
+                <input
+                    type="file"
+                    id="problemPhoto"
+                    accept="image/*">
+
+
+
+                <button
+                    type="submit"
+                    class="problem-submit">
+
+                    Submit Service Request
+
+                </button>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==================================================
+         MITRA REGISTRATION POPUP
+    =================================================== -->
+
+    <div
+        class="mitra-overlay"
+        id="mitraOverlay">
+
+
+        <div class="mitra-box">
+
+
+            <button
+                class="close-mitra"
+                onclick="closeMitraForm()">
+
+                ×
+
+            </button>
+
+
+
+            <div class="mitra-header">
+
+                <div class="mitra-icon">
+                    🏪
+                </div>
+
+                <h2>
+                    Join as a Mitra
+                </h2>
+
+                <p>
+                    Register your shop or service business
+                    with FixMitra.
+                </p>
+
+            </div>
+
+
+
+            <form
+                id="mitraForm"
+                onsubmit="submitMitra(event)">
+
 
                 <label>
                     Owner Name
@@ -58,8 +1065,6 @@
 
 
 
-                <!-- BUSINESS NAME -->
-
                 <label>
                     Business / Shop Name
                 </label>
@@ -71,8 +1076,6 @@
                     required>
 
 
-
-                <!-- MOBILE -->
 
                 <label>
                     Mobile Number
@@ -86,8 +1089,10 @@
                     required>
 
 
+
                 <button
                     type="button"
+                    class="verify-button"
                     onclick="sendMobileOTP()">
 
                     Send Mobile OTP
@@ -95,8 +1100,6 @@
                 </button>
 
 
-
-                <!-- MOBILE OTP -->
 
                 <label>
                     Mobile Verification OTP
@@ -110,8 +1113,10 @@
                     required>
 
 
+
                 <button
                     type="button"
+                    class="verify-button"
                     onclick="verifyMobileOTP()">
 
                     Verify Mobile
@@ -119,8 +1124,6 @@
                 </button>
 
 
-
-                <!-- EMAIL -->
 
                 <label>
                     Email
@@ -133,8 +1136,10 @@
                     required>
 
 
+
                 <button
                     type="button"
+                    class="verify-button"
                     onclick="sendEmailOTP()">
 
                     Send Email Verification
@@ -143,8 +1148,6 @@
 
 
 
-                <!-- EMAIL OTP -->
-
                 <label>
                     Email Verification OTP
                 </label>
@@ -152,13 +1155,15 @@
                 <input
                     type="text"
                     id="emailOTP"
-                    placeholder="Enter email OTP"
+                    placeholder="Enter email verification code"
                     maxlength="6"
                     required>
 
 
+
                 <button
                     type="button"
+                    class="verify-button"
                     onclick="verifyEmailOTP()">
 
                     Verify Email
@@ -166,8 +1171,6 @@
                 </button>
 
 
-
-                <!-- SERVICE -->
 
                 <label>
                     Service
@@ -229,8 +1232,6 @@
 
 
 
-                <!-- LOCATION -->
-
                 <label>
                     Location
                 </label>
@@ -263,8 +1264,6 @@
 
 
 
-                <!-- ADDRESS -->
-
                 <label>
                     Full Address
                 </label>
@@ -276,8 +1275,6 @@
                     required></textarea>
 
 
-
-                <!-- EXPERIENCE -->
 
                 <label>
                     Experience
@@ -315,8 +1312,6 @@
 
 
 
-                <!-- SHOP PHOTO -->
-
                 <label>
                     Shop Photo
                 </label>
@@ -328,8 +1323,6 @@
                     required>
 
 
-
-                <!-- PASSWORD -->
 
                 <label>
                     Create Password
@@ -344,8 +1337,6 @@
 
 
 
-                <!-- TERMS -->
-
                 <label class="terms">
 
                     <input
@@ -353,14 +1344,14 @@
                         id="terms"
                         required>
 
-                    I agree to FixMitra
-                    terms and conditions.
+                    <span>
+                        I agree to FixMitra
+                        terms and conditions.
+                    </span>
 
                 </label>
 
 
-
-                <!-- REGISTER -->
 
                 <button
                     type="submit"
@@ -373,19 +1364,85 @@
 
             </form>
 
-        </section>
+        </div>
 
-    </main>
+    </div>
 
 
 
-    <footer>
+    <!-- ==================================================
+         LOGIN POPUP
+    =================================================== -->
 
-        <p>
-            © 2026 FixMitra
-        </p>
+    <div
+        class="login-overlay"
+        id="loginOverlay">
 
-    </footer>
+
+        <div class="login-box">
+
+
+            <button
+                class="close-login"
+                onclick="closeLogin()">
+
+                ×
+
+            </button>
+
+
+            <h2>
+                Login / Sign Up
+            </h2>
+
+            <p>
+                Enter your details to continue.
+            </p>
+
+
+            <form
+                id="loginForm"
+                onsubmit="submitLogin(event)">
+
+
+                <label>
+                    Name
+                </label>
+
+                <input
+                    type="text"
+                    id="loginName"
+                    placeholder="Enter your name"
+                    required>
+
+
+                <label>
+                    Mobile Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="loginPhone"
+                    placeholder="Enter mobile number"
+                    maxlength="10"
+                    required>
+
+
+                <button
+                    type="submit"
+                    class="login-submit">
+
+                    Continue
+
+                </button>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
 
 
     <script src="script.js"></script>
