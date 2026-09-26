@@ -5,16 +5,22 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>FixMitra | Local Services Made Easy</title>
+    <title>FixMitra | Local Services, Made Easy</title>
 
     <meta
         name="description"
-        content="FixMitra connects customers with trusted local professionals for home and everyday services."
+        content="Find trusted local service professionals near you with FixMitra."
     >
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
 </head>
 
@@ -22,708 +28,990 @@
 <body>
 
 
-    <!-- HEADER -->
+<!-- =========================
+     HEADER
+========================= -->
 
-    <header class="header">
+<header class="header">
 
-        <div class="logo">
+    <div class="logo-area">
 
-            <h1>FixMitra</h1>
+        <h2>FixMitra</h2>
 
-            <p>Local Services, Made Easy</p>
+        <span>
+            Local Services, Made Easy
+        </span>
 
-        </div>
+    </div>
 
 
-        <nav class="navbar">
+    <nav class="navbar">
 
-            <a href="#home">Home</a>
+        <a href="#home">
+            Home
+        </a>
 
-            <a href="#services">Services</a>
+        <a href="#services">
+            Services
+        </a>
 
-            <a href="#how-it-works">How It Works</a>
+        <a href="#how-it-works">
+            How It Works
+        </a>
 
-            <a href="#about">About</a>
+        <a href="#about">
+            About
+        </a>
 
-            <a href="#contact">Contact</a>
+        <a href="#contact">
+            Contact
+        </a>
 
-        </nav>
+    </nav>
 
 
-        <button class="login-btn">
-
-            Login / Sign Up
-
-        </button>
-
-    </header>
-
-
-
-    <!-- HERO SECTION -->
-
-    <section id="home" class="hero">
-
-        <div class="hero-content">
-
-
-            <p class="small-title">
-
-                TRUSTED LOCAL SERVICES
-
-            </p>
-
-
-            <h2>
-
-                Find the Right
-
-                <span>Service</span>
-
-                Near You
-
-            </h2>
-
-
-            <p class="hero-text">
-
-                Find trusted professionals near you for all your
-                home and everyday service needs.
-
-            </p>
-
-
-
-            <!-- SEARCH BOX -->
-
-            <div class="search-box">
-
-
-                <select id="location">
-
-                    <option value="">
-
-                        📍 Select Location
-
-                    </option>
-
-                    <option value="gurugram">
-
-                        Gurugram
-
-                    </option>
-
-                    <option value="delhi">
-
-                        Delhi
-
-                    </option>
-
-                    <option value="noida">
-
-                        Noida
-
-                    </option>
-
-                    <option value="faridabad">
-
-                        Faridabad
-
-                    </option>
-
-                </select>
-
-
-
-                <input
-                    type="text"
-                    id="serviceSearch"
-                    placeholder="🔍 What service do you need?"
-                >
-
-
-
-                <button
-                    class="search-btn"
-                    onclick="searchService()"
-                >
-
-                    Find a Service
-
-                </button>
-
-
-            </div>
-
-
-
-            <!-- TRUST FEATURES -->
-
-            <div class="trust-features">
-
-
-                <div>
-
-                    <strong>✓</strong>
-
-                    <p>Verified Professionals</p>
-
-                </div>
-
-
-                <div>
-
-                    <strong>✓</strong>
-
-                    <p>Safe & Secure</p>
-
-                </div>
-
-
-                <div>
-
-                    <strong>₹</strong>
-
-                    <p>Best Prices</p>
-
-                </div>
-
-
-                <div>
-
-                    <strong>24/7</strong>
-
-                    <p>Support</p>
-
-                </div>
-
-
-            </div>
-
-
-        </div>
-
-
-    </section>
-
-
-
-    <!-- SERVICES -->
-
-    <section id="services" class="services">
-
-
-        <div class="section-heading">
-
-            <h2>
-
-                Our <span>Services</span>
-
-            </h2>
-
-            <p>
-
-                Choose from a wide range of professional services.
-
-            </p>
-
-        </div>
-
-
-
-        <div class="service-grid">
-
-
-            <div class="service-card">
-
-                <div class="service-icon">⚡</div>
-
-                <h3>Electrician</h3>
-
-                <p>
-                    Wiring, switches, boards and electrical repairs.
-                </p>
-
-            </div>
-
-
-
-            <div class="service-card">
-
-                <div class="service-icon">🚿</div>
-
-                <h3>Plumber</h3>
-
-                <p>
-                    Leakage, fittings and pipe repair.
-                </p>
-
-            </div>
-
-
-
-            <div class="service-card">
-
-                <div class="service-icon">❄️</div>
-
-                <h3>AC Repair</h3>
-
-                <p>
-                    AC installation, service and repair.
-                </p>
-
-            </div>
-
-
-
-            <div class="service-card">
-
-                <div class="service-icon">💧</div>
-
-                <h3>RO Service</h3>
-
-                <p>
-                    RO installation, repair and maintenance.
-                </p>
-
-            </div>
-
-
-
-            <div class="service-card">
-
-                <div class="service-icon">🔨</div>
-
-                <h3>Carpenter</h3>
-
-                <p>
-                    Furniture, woodwork and repairs.
-                </p>
-
-            </div>
-
-
-
-            <div class="service-card">
-
-                <div class="service-icon">🧹</div>
-
-                <h3>Cleaning</h3>
-
-                <p>
-                    Home and deep cleaning services.
-                </p>
-
-            </div>
-
-
-
-            <div class="service-card">
-
-                <div class="service-icon">🏠</div>
-
-                <h3>Home Repair</h3>
-
-                <p>
-                    Paint, wall repair and fixing.
-                </p>
-
-            </div>
-
-
-
-            <div class="service-card">
-
-                <div class="service-icon">💻</div>
-
-                <h3>Computer Repair</h3>
-
-                <p>
-                    Hardware, software and laptop repair.
-                </p>
-
-            </div>
-
-
-
-            <div class="service-card">
-
-                <div class="service-icon">🔌</div>
-
-                <h3>Appliance Repair</h3>
-
-                <p>
-                    Fridge, washing machine and TV repair.
-                </p>
-
-            </div>
-
-
-
-            <div class="service-card">
-
-                <div class="service-icon">🎨</div>
-
-                <h3>Painter</h3>
-
-                <p>
-                    Interior, exterior and wall painting.
-                </p>
-
-            </div>
-
-
-        </div>
-
-
-    </section>
-
-
-
-    <!-- HOW IT WORKS -->
-
-    <section
-        id="how-it-works"
-        class="how-it-works"
+    <button
+        class="login-btn"
+        type="button"
     >
+        Login / Sign Up
+    </button>
 
+</header>
 
-        <div class="section-heading">
 
-            <h2>
 
-                How <span>FixMitra</span> Works
+<!-- =========================
+     HERO
+========================= -->
 
-            </h2>
+<section
+    class="hero"
+    id="home"
+>
 
-            <p>
+    <div class="hero-content">
 
-                Get your work done in 4 simple steps.
+        <span class="hero-tag">
+            TRUSTED LOCAL SERVICES
+        </span>
 
-            </p>
 
-        </div>
-
-
-
-        <div class="steps">
-
-
-            <div class="step">
-
-                <div class="step-number">1</div>
-
-                <h3>Post Your Problem</h3>
-
-                <p>
-                    Tell us what service you need.
-                </p>
-
-            </div>
-
-
-
-            <div class="step">
-
-                <div class="step-number">2</div>
-
-                <h3>Get Quotes</h3>
-
-                <p>
-                    Receive quotes from local professionals.
-                </p>
-
-            </div>
-
-
-
-            <div class="step">
-
-                <div class="step-number">3</div>
-
-                <h3>Choose a Professional</h3>
-
-                <p>
-                    Compare profiles, ratings and prices.
-                </p>
-
-            </div>
-
-
-
-            <div class="step">
-
-                <div class="step-number">4</div>
-
-                <h3>Get the Work Done</h3>
-
-                <p>
-                    Book the service and get your work completed.
-                </p>
-
-            </div>
-
-
-        </div>
-
-
-    </section>
-
-
-
-    <!-- WHY FIXMITRA -->
-
-    <section class="why-fixmitra">
-
-
-        <div class="section-heading">
-
-            <h2>
-
-                Why <span>FixMitra?</span>
-
-            </h2>
-
-            <p>
-
-                Simple, reliable and convenient local services.
-
-            </p>
-
-        </div>
-
-
-
-        <div class="why-grid">
-
-
-            <div class="why-card">
-
-                <div>🛡️</div>
-
-                <h3>Verified Professionals</h3>
-
-                <p>
-                    Find reliable service professionals.
-                </p>
-
-            </div>
-
-
-
-            <div class="why-card">
-
-                <div>📍</div>
-
-                <h3>Local & Nearby</h3>
-
-                <p>
-                    Find professionals near your location.
-                </p>
-
-            </div>
-
-
-
-            <div class="why-card">
-
-                <div>₹</div>
-
-                <h3>Transparent Pricing</h3>
-
-                <p>
-                    Compare quotes before booking.
-                </p>
-
-            </div>
-
-
-
-            <div class="why-card">
-
-                <div>⭐</div>
-
-                <h3>Real Reviews</h3>
-
-                <p>
-                    See reviews from customers.
-                </p>
-
-            </div>
-
-
-        </div>
-
-
-    </section>
-
-
-
-    <!-- ABOUT -->
-
-    <section id="about" class="about">
-
-
-        <div class="section-heading">
-
-            <h2>
-
-                About <span>FixMitra</span>
-
-            </h2>
-
-        </div>
+        <h1>
+            Find the Right
+            <br>
+            Service Near You
+        </h1>
 
 
         <p>
-
-            FixMitra is a local services platform designed
-            to connect customers with trusted professionals
-            for everyday home and personal service needs.
-
+            Find trusted professionals for your home
+            and personal service needs.
         </p>
 
 
-    </section>
+        <div class="search-box">
+
+            <select id="location">
+
+                <option value="">
+                    Select Location
+                </option>
+
+                <option value="Gurugram">
+                    Gurugram
+                </option>
+
+                <option value="Delhi">
+                    Delhi
+                </option>
+
+                <option value="Noida">
+                    Noida
+                </option>
+
+                <option value="Faridabad">
+                    Faridabad
+                </option>
+
+            </select>
+
+
+            <input
+                type="text"
+                id="serviceSearch"
+                placeholder="What service do you need?"
+            >
+
+
+            <button
+                type="button"
+                onclick="searchService()"
+            >
+                Search Services
+            </button>
+
+        </div>
+
+
+        <div class="trust-features">
+
+            <span>
+                ✓ Verified Professionals
+            </span>
+
+            <span>
+                ✓ Transparent Pricing
+            </span>
+
+            <span>
+                ✓ Easy Booking
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
 
 
 
-    <!-- CTA -->
+<!-- =========================
+     SERVICES
+========================= -->
 
-    <section id="contact" class="cta">
+<section
+    class="services-section"
+    id="services"
+>
+
+    <div class="section-heading">
+
+        <span>
+            OUR SERVICES
+        </span>
+
+        <h2>
+            What Do You Need Help With?
+        </h2>
+
+        <p>
+            Choose a service and tell us what you need.
+        </p>
+
+    </div>
+
+
+    <div class="services-grid">
+
+
+        <div
+            class="service-card"
+            onclick="openProblemForm('Electrician')"
+        >
+
+            <div class="service-icon">
+                ⚡
+            </div>
+
+            <h3>
+                Electrician
+            </h3>
+
+            <p>
+                Electrical repair and installation
+            </p>
+
+        </div>
+
+
+
+        <div
+            class="service-card"
+            onclick="openProblemForm('Plumber')"
+        >
+
+            <div class="service-icon">
+                🔧
+            </div>
+
+            <h3>
+                Plumber
+            </h3>
+
+            <p>
+                Plumbing repair and maintenance
+            </p>
+
+        </div>
+
+
+
+        <div
+            class="service-card"
+            onclick="openProblemForm('AC Repair')"
+        >
+
+            <div class="service-icon">
+                ❄️
+            </div>
+
+            <h3>
+                AC Repair
+            </h3>
+
+            <p>
+                AC service and repair
+            </p>
+
+        </div>
+
+
+
+        <div
+            class="service-card"
+            onclick="openProblemForm('RO Service')"
+        >
+
+            <div class="service-icon">
+                💧
+            </div>
+
+            <h3>
+                RO Service
+            </h3>
+
+            <p>
+                RO repair and maintenance
+            </p>
+
+        </div>
+
+
+
+        <div
+            class="service-card"
+            onclick="openProblemForm('Carpenter')"
+        >
+
+            <div class="service-icon">
+                🪚
+            </div>
+
+            <h3>
+                Carpenter
+            </h3>
+
+            <p>
+                Furniture and woodwork services
+            </p>
+
+        </div>
+
+
+
+        <div
+            class="service-card"
+            onclick="openProblemForm('Cleaning')"
+        >
+
+            <div class="service-icon">
+                🧹
+            </div>
+
+            <h3>
+                Cleaning
+            </h3>
+
+            <p>
+                Home and office cleaning
+            </p>
+
+        </div>
+
+
+
+        <div
+            class="service-card"
+            onclick="openProblemForm('Home Repair')"
+        >
+
+            <div class="service-icon">
+                🏠
+            </div>
+
+            <h3>
+                Home Repair
+            </h3>
+
+            <p>
+                General home repair services
+            </p>
+
+        </div>
+
+
+
+        <div
+            class="service-card"
+            onclick="openProblemForm('Computer Repair')"
+        >
+
+            <div class="service-icon">
+                💻
+            </div>
+
+            <h3>
+                Computer Repair
+            </h3>
+
+            <p>
+                Laptop and computer support
+            </p>
+
+        </div>
+
+
+
+        <div
+            class="service-card"
+            onclick="openProblemForm('Appliance Repair')"
+        >
+
+            <div class="service-icon">
+                🔌
+            </div>
+
+            <h3>
+                Appliance Repair
+            </h3>
+
+            <p>
+                Home appliance repair
+            </p>
+
+        </div>
+
+
+
+        <div
+            class="service-card"
+            onclick="openProblemForm('Painter')"
+        >
+
+            <div class="service-icon">
+                🎨
+            </div>
+
+            <h3>
+                Painter
+            </h3>
+
+            <p>
+                Home painting services
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="problem-button-area">
+
+        <h3>
+            Can't find your exact service?
+        </h3>
+
+        <p>
+            Tell us about your problem and we will
+            help you find the right professional.
+        </p>
+
+
+        <button
+            type="button"
+            onclick="openProblemForm('General Service')"
+        >
+            Post Your Problem
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     HOW IT WORKS
+========================= -->
+
+<section
+    class="how-section"
+    id="how-it-works"
+>
+
+    <div class="section-heading">
+
+        <span>
+            SIMPLE PROCESS
+        </span>
+
+        <h2>
+            How FixMitra Works
+        </h2>
+
+    </div>
+
+
+    <div class="how-grid">
+
+
+        <div class="how-card">
+
+            <div class="step-number">
+                01
+            </div>
+
+            <h3>
+                Tell Us Your Problem
+            </h3>
+
+            <p>
+                Select a service and explain what
+                you need help with.
+            </p>
+
+        </div>
+
+
+
+        <div class="how-card">
+
+            <div class="step-number">
+                02
+            </div>
+
+            <h3>
+                Get Quotes
+            </h3>
+
+            <p>
+                Connect with available service
+                professionals.
+            </p>
+
+        </div>
+
+
+
+        <div class="how-card">
+
+            <div class="step-number">
+                03
+            </div>
+
+            <h3>
+                Choose a Professional
+            </h3>
+
+            <p>
+                Compare details and choose the
+                professional you want.
+            </p>
+
+        </div>
+
+
+
+        <div class="how-card">
+
+            <div class="step-number">
+                04
+            </div>
+
+            <h3>
+                Get the Work Done
+            </h3>
+
+            <p>
+                Book the service and get your
+                problem solved.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     WHY FIXMITRA
+========================= -->
+
+<section class="why-section">
+
+    <div class="section-heading">
+
+        <span>
+            WHY FIXMITRA
+        </span>
+
+        <h2>
+            Services You Can Trust
+        </h2>
+
+    </div>
+
+
+    <div class="why-grid">
+
+
+        <div class="why-card">
+
+            <div>
+                ✓
+            </div>
+
+            <h3>
+                Trusted Professionals
+            </h3>
+
+            <p>
+                Connect with service professionals
+                in your local area.
+            </p>
+
+        </div>
+
+
+
+        <div class="why-card">
+
+            <div>
+                ₹
+            </div>
+
+            <h3>
+                Compare Quotes
+            </h3>
+
+            <p>
+                Get service information before
+                making your decision.
+            </p>
+
+        </div>
+
+
+
+        <div class="why-card">
+
+            <div>
+                ⚡
+            </div>
+
+            <h3>
+                Quick Response
+            </h3>
+
+            <p>
+                Find help for your service needs
+                quickly.
+            </p>
+
+        </div>
+
+
+
+        <div class="why-card">
+
+            <div>
+                ⭐
+            </div>
+
+            <h3>
+                Reviews
+            </h3>
+
+            <p>
+                Review your service experience
+                after the work.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section
+    class="about-section"
+    id="about"
+>
+
+    <div class="about-content">
+
+        <span>
+            ABOUT FIXMITRA
+        </span>
+
+        <h2>
+            Your Local Service Partner
+        </h2>
+
+        <p>
+            FixMitra is a platform designed to make
+            finding local service professionals easier.
+            Customers can describe their problem,
+            connect with professionals and manage
+            their service requests.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section
+    class="cta-section"
+    id="contact"
+>
+
+    <div>
+
+        <h2>
+            Need a Service Today?
+        </h2>
+
+        <p>
+            Tell us what you need and get started.
+        </p>
+
+    </div>
+
+
+    <button
+        type="button"
+        onclick="startService()"
+    >
+        Get Started →
+    </button>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+    <div class="footer-grid">
 
 
         <div>
 
             <h2>
-
-                Need a Service?
-
+                FixMitra
             </h2>
 
             <p>
-
-                Post your problem and connect with local professionals.
-
+                Local Services, Made Easy.
             </p>
 
         </div>
 
 
 
-        <button onclick="startService()">
+        <div>
 
-            Get Started →
+            <h3>
+                Quick Links
+            </h3>
 
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#services">
+                Services
+            </a>
+
+            <a href="#how-it-works">
+                How It Works
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+        </div>
+
+
+
+        <div>
+
+            <h3>
+                Popular Services
+            </h3>
+
+            <a
+                href="#services"
+                onclick="openProblemForm('Electrician')"
+            >
+                Electrician
+            </a>
+
+            <a
+                href="#services"
+                onclick="openProblemForm('Plumber')"
+            >
+                Plumber
+            </a>
+
+            <a
+                href="#services"
+                onclick="openProblemForm('AC Repair')"
+            >
+                AC Repair
+            </a>
+
+            <a
+                href="#services"
+                onclick="openProblemForm('RO Service')"
+            >
+                RO Service
+            </a>
+
+        </div>
+
+
+
+        <div>
+
+            <h3>
+                Contact
+            </h3>
+
+            <p>
+                📍 Gurugram, Haryana
+            </p>
+
+            <p>
+                📞 +91 7042703848
+            </p>
+
+            <a
+                href="https://wa.me/917042703848"
+                target="_blank"
+            >
+                💬 WhatsApp
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 FixMitra. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================
+     PROBLEM FORM
+========================= -->
+
+<div
+    class="problem-overlay"
+    id="problemOverlay"
+>
+
+
+    <div class="problem-box">
+
+
+        <button
+            type="button"
+            class="close-problem"
+            onclick="closeProblemForm()"
+        >
+            ×
         </button>
 
 
-    </section>
+        <div class="problem-header">
 
+            <span>
+                FIXMITRA SERVICE REQUEST
+            </span>
 
-
-    <!-- FOOTER -->
-
-    <footer>
-
-
-        <div class="footer-content">
-
-
-            <div>
-
-                <h2>FixMitra</h2>
-
-                <p>
-
-                    Local Services, Made Easy
-
-                </p>
-
-            </div>
-
-
-
-            <div>
-
-                <h3>Quick Links</h3>
-
-                <a href="#home">Home</a>
-
-                <a href="#services">Services</a>
-
-                <a href="#how-it-works">
-                    How It Works
-                </a>
-
-                <a href="#about">About</a>
-
-            </div>
-
-
-
-            <div>
-
-                <h3>Services</h3>
-
-                <a href="#services">
-                    Electrician
-                </a>
-
-                <a href="#services">
-                    Plumber
-                </a>
-
-                <a href="#services">
-                    AC Repair
-                </a>
-
-                <a href="#services">
-                    RO Service
-                </a>
-
-            </div>
-
-
-
-            <div>
-
-                <h3>Contact</h3>
-
-                <p>
-                    📍 Gurugram, Haryana
-                </p>
-
-                <p>
-                    📞 +91 70427 03848
-                </p>
-
-            </div>
-
-
-        </div>
-
-
-
-        <div class="copyright">
+            <h2>
+                Tell Us Your Problem
+            </h2>
 
             <p>
-
-                © 2026 FixMitra.
-                All Rights Reserved.
-
+                Share your requirement and we will
+                help you find the right service.
             </p>
 
         </div>
 
 
-    </footer>
+
+        <form
+            id="problemForm"
+            onsubmit="submitProblem(event)"
+        >
+
+
+            <label>
+                Service
+            </label>
+
+            <input
+                type="text"
+                id="problemService"
+                readonly
+            >
 
 
 
-    <!-- JAVASCRIPT -->
+            <label>
+                Your Name
+            </label>
 
-    <script src="script.js"></script>
+            <input
+                type="text"
+                id="problemName"
+                placeholder="Enter your name"
+                required
+            >
+
+
+
+            <label>
+                Mobile Number
+            </label>
+
+            <input
+                type="tel"
+                id="problemPhone"
+                placeholder="Enter 10-digit mobile number"
+                maxlength="10"
+                required
+            >
+
+
+
+            <label>
+                Location
+            </label>
+
+            <select
+                id="problemLocation"
+                required
+            >
+
+                <option value="">
+                    Select your location
+                </option>
+
+                <option value="Gurugram">
+                    Gurugram
+                </option>
+
+                <option value="Delhi">
+                    Delhi
+                </option>
+
+                <option value="Noida">
+                    Noida
+                </option>
+
+                <option value="Faridabad">
+                    Faridabad
+                </option>
+
+            </select>
+
+
+
+            <label>
+                Problem / Requirement
+            </label>
+
+            <textarea
+                id="problemDescription"
+                rows="4"
+                placeholder="Describe your problem..."
+                required
+            ></textarea>
+
+
+
+            <label>
+                Upload Photo
+                <span>
+                    (Optional)
+                </span>
+            </label>
+
+            <input
+                type="file"
+                id="problemPhoto"
+                accept="image/*"
+            >
+
+
+
+            <button
+                type="submit"
+                class="problem-submit"
+            >
+                Submit Service Request
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script src="script.js"></script>
 
 
 </body>
