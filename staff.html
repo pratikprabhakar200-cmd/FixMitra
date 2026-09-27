@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FixMitra - Staff Dashboard</title>
+
+    <link rel="stylesheet" href="staff.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="staff-header">
+        <div>
+            <h1>FixMitra</h1>
+            <p>Staff / Engineer Dashboard</p>
+        </div>
+
+        <button class="logout-btn" onclick="logoutStaff()">
+            Logout
+        </button>
+    </header>
+
+
+    <!-- Staff Profile -->
+    <section class="staff-profile">
+        <div class="profile-icon">👨‍🔧</div>
+
+        <div>
+            <h2>Welcome, Engineer</h2>
+            <p>Staff ID: <strong>FM-ENG-001</strong></p>
+            <p>Status: <span class="online">● Online</span></p>
+        </div>
+    </section>
+
+
+    <!-- Dashboard Stats -->
+    <section class="stats-container">
+
+        <div class="stat-card">
+            <span>📋</span>
+            <h3 id="totalJobs">3</h3>
+            <p>Assigned Jobs</p>
+        </div>
+
+        <div class="stat-card">
+            <span>📅</span>
+            <h3 id="todayJobs">2</h3>
+            <p>Today's Visits</p>
+        </div>
+
+        <div class="stat-card">
+            <span>⏳</span>
+            <h3 id="pendingJobs">1</h3>
+            <p>Pending Jobs</p>
+        </div>
+
+        <div class="stat-card">
+            <span>✅</span>
+            <h3 id="completedJobs">5</h3>
+            <p>Completed Jobs</p>
+        </div>
+
+    </section>
+
+
+    <!-- Assigned Jobs -->
+    <section class="dashboard-section">
+
+        <div class="section-title">
+            <h2>📋 My Assigned Jobs</h2>
+
+            <button class="refresh-btn" onclick="refreshJobs()">
+                🔄 Refresh
+            </button>
+        </div>
+
+
+        <!-- Job Card -->
+        <div class="job-card">
+
+            <div class="job-top">
+                <div>
+                    <h3>Job #FM1001</h3>
+                    <p class="service-name">RO Service</p>
+                </div>
+
+                <span class="status pending">
+                    Assigned
+                </span>
+            </div>
+
+
+            <div class="job-details">
+
+                <p>
+                    👤 <strong>Customer:</strong>
+                    Rahul Kumar
+                </p>
+
+                <p>
+                    📱 <strong>Mobile:</strong>
+                    98XXXXXX10
+                </p>
+
+                <p>
+                    📍 <strong>Location:</strong>
+                    Delhi
+                </p>
+
+                <p>
+                    📅 <strong>Visit:</strong>
+                    Today, 2:00 PM
+                </p>
+
+                <p>
+                    🚗 <strong>Distance:</strong>
+                    6.5 KM
+                </p>
+
+            </div>
+
+
+            <!-- Job Actions -->
+            <div class="job-actions">
+
+                <button onclick="viewCustomer()">
+                    👤 Customer
+                </button>
+
+                <button onclick="openNavigation()">
+                    🗺️ Navigate
+                </button>
+
+                <button onclick="startVisit()">
+                    ▶️ Start Visit
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Second Job -->
+        <div class="job-card">
+
+            <div class="job-top">
+                <div>
+                    <h3>Job #FM1002</h3>
+                    <p class="service-name">
+                        RO Installation
+                    </p>
+                </div>
+
+                <span class="status scheduled">
+                    Scheduled
+                </span>
+            </div>
+
+
+            <div class="job-details">
+
+                <p>
+                    👤 <strong>Customer:</strong>
+                    Amit Sharma
+                </p>
+
+                <p>
+                    📱 <strong>Mobile:</strong>
+                    97XXXXXX20
+                </p>
+
+                <p>
+                    📍 <strong>Location:</strong>
+                    Noida
+                </p>
+
+                <p>
+                    📅 <strong>Visit:</strong>
+                    Today, 5:00 PM
+                </p>
+
+                <p>
+                    🚗 <strong>Distance:</strong>
+                    11.2 KM
+                </p>
+
+            </div>
+
+
+            <div class="job-actions">
+
+                <button onclick="viewCustomer()">
+                    👤 Customer
+                </button>
+
+                <button onclick="openNavigation()">
+                    🗺️ Navigate
+                </button>
+
+                <button onclick="startVisit()">
+                    ▶️ Start Visit
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Inspection Section -->
+    <section class="dashboard-section">
+
+        <h2>🔧 Inspection & Repair</h2>
+
+        <div class="inspection-grid">
+
+            <button onclick="startInspection()">
+                🔍 Start Inspection
+            </button>
+
+            <button onclick="openReport()">
+                📝 Inspection Report
+            </button>
+
+            <button onclick="addParts()">
+                🔩 Add Parts
+            </button>
+
+            <button onclick="addRepairCharges()">
+                💰 Repair Charges
+            </button>
+
+            <button onclick="sendEstimate()">
+                📤 Send Estimate
+            </button>
+
+            <button onclick="checkApproval()">
+                ⏳ Customer Approval
+            </button>
+
+            <button onclick="startRepair()">
+                🔨 Start Repair
+            </button>
+
+            <button onclick="completeJob()">
+                ✅ Complete Job
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Location Section -->
+    <section class="dashboard-section">
+
+        <h2>📍 Location & Tracking</h2>
+
+        <div class="tracking-box">
+
+            <p>
+                <strong>Customer Location:</strong>
+                Delhi
+            </p>
+
+            <p>
+                <strong>Engineer Location:</strong>
+                Updating...
+            </p>
+
+            <p>
+                <strong>Distance:</strong>
+                6.5 KM
+            </p>
+
+            <p>
+                <strong>ETA:</strong>
+                18 minutes
+            </p>
+
+            <button onclick="startTracking()">
+                📍 Start Tracking
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Job Completion -->
+    <section class="dashboard-section">
+
+        <h2>📊 Job Summary</h2>
+
+        <div class="summary-box">
+
+            <p>
+                Visit Charge:
+                <strong>₹65</strong>
+            </p>
+
+            <p>
+                Inspection Charge:
+                <strong>₹199</strong>
+            </p>
+
+            <p>
+                Parts:
+                <strong>₹0</strong>
+            </p>
+
+            <p>
+                Additional Repair:
+                <strong>₹0</strong>
+            </p>
+
+            <hr>
+
+            <p class="total">
+                Total:
+                <strong>₹264</strong>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        <p>© 2026 FixMitra | Staff Dashboard</p>
+    </footer>
+
+
+    <script src="staff.js"></script>
+
+</body>
+</html>
