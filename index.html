@@ -858,6 +858,20 @@
     </footer>
 
 
+    <!-- ================= BOOKING / TRACKING SHORTCUT ================= -->
+
+    <section class="booking-tools-section">
+        <div class="container booking-tools-container">
+            <div>
+                <span class="section-label">YOUR SERVICE</span>
+                <h2>Book at Your Convenient Date & Time</h2>
+                <p>Choose when you want the engineer to visit. After assignment, tracking will be available here.</p>
+            </div>
+            <button class="btn btn-primary large-btn" onclick="openBookingTracker()">📍 Track My Booking</button>
+        </div>
+    </section>
+
+
     <!-- ================= CUSTOMER POPUP ================= -->
 
     <div
@@ -999,6 +1013,58 @@
                 <div class="form-group">
 
                     <label>
+                        Preferred Service Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="bookingDate"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Preferred Time Slot
+                    </label>
+
+                    <select id="bookingTime" required>
+                        <option value="">Select Time Slot</option>
+                        <option>09:00 AM - 11:00 AM</option>
+                        <option>11:00 AM - 01:00 PM</option>
+                        <option>02:00 PM - 04:00 PM</option>
+                        <option>04:00 PM - 06:00 PM</option>
+                        <option>06:00 PM - 08:00 PM</option>
+                    </select>
+
+                </div>
+
+
+                <div class="location-tools">
+                    <button type="button" class="small-btn" onclick="useMyLocation()">📍 Use My Location</button>
+                    <span id="locationStatus">Location not detected</span>
+                </div>
+
+
+                <div class="charge-box" id="chargeBox">
+                    <div class="charge-title">💰 Estimated Visit & Inspection Charges</div>
+                    <div class="charge-grid">
+                        <div><span>Vehicle</span><strong id="vehicleRate">Select location</strong></div>
+                        <div><span>Distance</span><strong id="distanceValue">--</strong></div>
+                        <div><span>Visit Charge</span><strong id="visitCharge">₹0</strong></div>
+                        <div><span>Inspection</span><strong>₹199</strong></div>
+                    </div>
+                    <div class="charge-total">Estimated total: <strong id="estimatedTotal">₹199</strong></div>
+                    <p>Final travel distance will be confirmed after engineer assignment.</p>
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
                         Address
                     </label>
 
@@ -1054,6 +1120,23 @@
 
         </div>
 
+    </div>
+
+
+    <!-- ================= BOOKING TRACKER POPUP ================= -->
+
+    <div class="modal" id="trackerModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeBookingTracker()">×</button>
+            <div class="modal-heading">
+                <span>📍</span>
+                <div>
+                    <h2>Track My Booking</h2>
+                    <p>View your latest FixMitra service request.</p>
+                </div>
+            </div>
+            <div id="trackerContent"></div>
+        </div>
     </div>
 
 
@@ -1430,6 +1513,23 @@
 
         </div>
 
+    </div>
+
+
+    <!-- ================= BOOKING CONFIRMATION POPUP ================= -->
+
+    <div class="modal" id="confirmationModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeConfirmationModal()">×</button>
+            <div class="modal-heading">
+                <span>✅</span>
+                <div>
+                    <h2>FixMitra Booking</h2>
+                    <p>Booking details and estimated charges.</p>
+                </div>
+            </div>
+            <div id="confirmationContent"></div>
+        </div>
     </div>
 
 
