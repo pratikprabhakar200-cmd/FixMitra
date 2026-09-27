@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>FixMitra - Staff Registration</title>
@@ -19,208 +21,432 @@
             color: #222;
         }
 
+        /* Header */
+
         .header {
             background: #0b5ed7;
             color: white;
-            padding: 20px;
+            padding: 20px 5%;
             text-align: center;
         }
 
         .header h1 {
-            margin-bottom: 6px;
+            font-size: 30px;
+            margin-bottom: 5px;
         }
 
-        .container {
+        .header p {
+            font-size: 15px;
+            opacity: 0.9;
+        }
+
+
+        /* Registration Container */
+
+        .registration-container {
             width: 92%;
-            max-width: 750px;
-            margin: 30px auto;
-        }
-
-        .form-card {
+            max-width: 700px;
+            margin: 35px auto;
             background: white;
-            padding: 28px;
-            border-radius: 14px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.10);
         }
 
-        .form-card h2 {
-            margin-bottom: 8px;
+
+        .registration-container h2 {
+            text-align: center;
             color: #0b5ed7;
+            margin-bottom: 8px;
         }
 
-        .description {
+        .registration-intro {
+            text-align: center;
             color: #666;
             margin-bottom: 25px;
+            font-size: 14px;
         }
+
+
+        /* Form */
 
         .form-group {
             margin-bottom: 18px;
         }
 
-        label {
+        .form-group label {
             display: block;
             font-weight: bold;
             margin-bottom: 7px;
         }
 
-        input,
-        select,
-        textarea {
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
             width: 100%;
             padding: 12px;
             border: 1px solid #ccc;
             border-radius: 8px;
             font-size: 15px;
+            outline: none;
         }
 
-        textarea {
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #0b5ed7;
+        }
+
+        .form-group textarea {
             min-height: 90px;
             resize: vertical;
         }
 
-        input:focus,
-        select:focus,
-        textarea:focus {
-            outline: none;
-            border-color: #0b5ed7;
+
+        /* Two Column */
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
         }
+
+
+        /* Submit Button */
 
         .submit-btn {
             width: 100%;
-            padding: 14px;
             background: #0b5ed7;
             color: white;
             border: none;
+            padding: 14px;
             border-radius: 8px;
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
+            margin-top: 10px;
         }
 
         .submit-btn:hover {
             opacity: 0.9;
         }
 
-        .note {
-            margin-top: 18px;
-            padding: 12px;
-            background: #fff8e1;
-            border-radius: 8px;
-            color: #665200;
-            font-size: 14px;
+
+        /* Login Link */
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
         }
 
-        .back-btn {
-            display: inline-block;
-            margin-top: 20px;
-            text-decoration: none;
+        .login-link a {
             color: #0b5ed7;
+            text-decoration: none;
             font-weight: bold;
         }
 
+
+        /* Important Note */
+
+        .note {
+            background: #fff3cd;
+            color: #856404;
+            padding: 14px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+
+        /* Success Message */
+
+        #successMessage {
+            display: none;
+            background: #d1e7dd;
+            color: #0f5132;
+            padding: 18px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+
+        /* Footer */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #666;
+            font-size: 14px;
+        }
+
+
+        /* Mobile */
+
         @media (max-width: 600px) {
-            .container {
-                width: 94%;
+
+            .registration-container {
+                padding: 20px;
+                margin: 20px auto;
             }
 
-            .form-card {
-                padding: 20px;
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .header h1 {
+                font-size: 25px;
             }
         }
+
     </style>
+
 </head>
+
 
 <body>
 
+
     <!-- Header -->
+
     <header class="header">
+
         <h1>FixMitra</h1>
+
         <p>Staff / Engineer Registration</p>
+
     </header>
 
 
+
     <!-- Registration Form -->
-    <main class="container">
 
-        <div class="form-card">
+    <div class="registration-container">
 
-            <h2>👨‍🔧 Staff Registration</h2>
+        <h2>👨‍🔧 Staff Registration</h2>
 
-            <p class="description">
-                Register as a FixMitra Staff / Engineer.
-                Your application will be reviewed by Admin.
-            </p>
+        <p class="registration-intro">
+            Register as a FixMitra Staff / Engineer
+        </p>
 
 
-            <form id="staffRegistrationForm">
+        <!-- Important Note -->
 
-                <!-- Full Name -->
+        <div class="note">
+
+            <strong>Important:</strong>
+
+            Registration submit karne ke baad
+            Admin aapki details verify karega.
+
+            Approval ke baad Staff ID aur Password
+            generate kiya jayega.
+
+        </div>
+
+
+
+        <form id="staffRegistrationForm">
+
+
+            <!-- Name -->
+
+            <div class="form-group">
+
+                <label for="staffName">
+                    Full Name *
+                </label>
+
+                <input
+                    type="text"
+                    id="staffName"
+                    name="staffName"
+                    placeholder="Enter your full name"
+                    required
+                >
+
+            </div>
+
+
+
+            <!-- Mobile + Email -->
+
+            <div class="form-row">
+
+
                 <div class="form-group">
-                    <label for="fullName">
-                        Full Name *
-                    </label>
 
-                    <input
-                        type="text"
-                        id="fullName"
-                        name="fullName"
-                        placeholder="Enter your full name"
-                        required
-                    >
-                </div>
-
-
-                <!-- Mobile -->
-                <div class="form-group">
-                    <label for="mobile">
+                    <label for="staffMobile">
                         Mobile Number *
                     </label>
 
                     <input
                         type="tel"
-                        id="mobile"
-                        name="mobile"
-                        placeholder="Enter 10 digit mobile number"
+                        id="staffMobile"
+                        name="staffMobile"
+                        placeholder="Enter mobile number"
                         maxlength="10"
-                        pattern="[0-9]{10}"
                         required
                     >
+
                 </div>
 
 
-                <!-- Email -->
+
                 <div class="form-group">
-                    <label for="email">
+
+                    <label for="staffEmail">
                         Email Address *
                     </label>
 
                     <input
                         type="email"
-                        id="email"
-                        name="email"
-                        placeholder="Enter your email address"
+                        id="staffEmail"
+                        name="staffEmail"
+                        placeholder="Enter email address"
                         required
                     >
+
                 </div>
 
+            </div>
 
-                <!-- Address -->
+
+
+            <!-- Service -->
+
+            <div class="form-group">
+
+                <label for="service">
+
+                    Service / Skill *
+
+                </label>
+
+
+                <select
+                    id="service"
+                    name="service"
+                    required
+                >
+
+                    <option value="">
+                        Select Service
+                    </option>
+
+                    <option value="RO Service">
+                        RO Service
+                    </option>
+
+                    <option value="RO Installation">
+                        RO Installation
+                    </option>
+
+                    <option value="RO Repair">
+                        RO Repair
+                    </option>
+
+                    <option value="Electrical">
+                        Electrical
+                    </option>
+
+                    <option value="Plumbing">
+                        Plumbing
+                    </option>
+
+                    <option value="AC Service">
+                        AC Service
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- Experience -->
+
+            <div class="form-group">
+
+                <label for="experience">
+
+                    Experience *
+
+                </label>
+
+
+                <select
+                    id="experience"
+                    name="experience"
+                    required
+                >
+
+                    <option value="">
+                        Select Experience
+                    </option>
+
+                    <option value="Fresher">
+                        Fresher
+                    </option>
+
+                    <option value="Less than 1 year">
+                        Less than 1 year
+                    </option>
+
+                    <option value="1-3 years">
+                        1-3 Years
+                    </option>
+
+                    <option value="3-5 years">
+                        3-5 Years
+                    </option>
+
+                    <option value="5+ years">
+                        5+ Years
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- Address -->
+
+            <div class="form-group">
+
+                <label for="address">
+
+                    Address *
+
+                </label>
+
+
+                <textarea
+                    id="address"
+                    name="address"
+                    placeholder="Enter your complete address"
+                    required
+                ></textarea>
+
+            </div>
+
+
+
+            <!-- City -->
+
+            <div class="form-row">
+
+
                 <div class="form-group">
-                    <label for="address">
-                        Address *
-                    </label>
 
-                    <textarea
-                        id="address"
-                        name="address"
-                        placeholder="Enter your complete address"
-                        required
-                    ></textarea>
-                </div>
-
-
-                <!-- City -->
-                <div class="form-group">
                     <label for="city">
                         City *
                     </label>
@@ -229,147 +455,205 @@
                         type="text"
                         id="city"
                         name="city"
-                        placeholder="Enter your city"
+                        placeholder="Enter city"
                         required
                     >
+
                 </div>
 
 
-                <!-- Skill -->
+
                 <div class="form-group">
-                    <label for="skill">
-                        Service / Skill *
-                    </label>
 
-                    <select id="skill" name="skill" required>
-
-                        <option value="">
-                            Select your skill
-                        </option>
-
-                        <option value="RO Service">
-                            RO Service
-                        </option>
-
-                        <option value="RO Installation">
-                            RO Installation
-                        </option>
-
-                        <option value="RO Repair">
-                            RO Repair
-                        </option>
-
-                        <option value="Electrical">
-                            Electrical
-                        </option>
-
-                        <option value="Plumbing">
-                            Plumbing
-                        </option>
-
-                        <option value="AC Service">
-                            AC Service
-                        </option>
-
-                        <option value="Other">
-                            Other
-                        </option>
-
-                    </select>
-                </div>
-
-
-                <!-- Experience -->
-                <div class="form-group">
-                    <label for="experience">
-                        Experience *
-                    </label>
-
-                    <select id="experience" name="experience" required>
-
-                        <option value="">
-                            Select experience
-                        </option>
-
-                        <option value="Fresher">
-                            Fresher
-                        </option>
-
-                        <option value="1-2 Years">
-                            1-2 Years
-                        </option>
-
-                        <option value="3-5 Years">
-                            3-5 Years
-                        </option>
-
-                        <option value="5+ Years">
-                            5+ Years
-                        </option>
-
-                    </select>
-                </div>
-
-
-                <!-- Profile Photo -->
-                <div class="form-group">
-                    <label for="photo">
-                        Profile Photo
+                    <label for="pincode">
+                        Pincode *
                     </label>
 
                     <input
-                        type="file"
-                        id="photo"
-                        name="photo"
-                        accept="image/*"
+                        type="text"
+                        id="pincode"
+                        name="pincode"
+                        placeholder="Enter pincode"
+                        maxlength="6"
+                        required
                     >
-                </div>
-
-
-                <!-- Terms -->
-                <div class="form-group">
-
-                    <label>
-                        <input
-                            type="checkbox"
-                            id="terms"
-                            required
-                            style="width:auto; margin-right:8px;"
-                        >
-
-                        I confirm that the information provided by me
-                        is correct.
-                    </label>
 
                 </div>
 
-
-                <!-- Submit -->
-                <button
-                    type="submit"
-                    class="submit-btn"
-                >
-                    Submit Registration
-                </button>
-
-            </form>
-
-
-            <div class="note">
-                ℹ️ Your registration will first go to Admin for
-                verification. Staff ID and login credentials will be
-                issued only after approval.
             </div>
 
 
-            <a href="index.html" class="back-btn">
-                ← Back to FixMitra
+
+            <!-- ID Proof -->
+
+            <div class="form-group">
+
+                <label for="idProof">
+
+                    ID Proof Type *
+
+                </label>
+
+
+                <select
+                    id="idProof"
+                    name="idProof"
+                    required
+                >
+
+                    <option value="">
+                        Select ID Proof
+                    </option>
+
+                    <option value="Aadhaar">
+                        Aadhaar Card
+                    </option>
+
+                    <option value="PAN">
+                        PAN Card
+                    </option>
+
+                    <option value="Driving License">
+                        Driving License
+                    </option>
+
+                    <option value="Voter ID">
+                        Voter ID
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- ID Number -->
+
+            <div class="form-group">
+
+                <label for="idNumber">
+
+                    ID Proof Number *
+
+                </label>
+
+
+                <input
+                    type="text"
+                    id="idNumber"
+                    name="idNumber"
+                    placeholder="Enter ID proof number"
+                    required
+                >
+
+            </div>
+
+
+
+            <!-- Additional Information -->
+
+            <div class="form-group">
+
+                <label for="message">
+
+                    Additional Information
+
+                </label>
+
+
+                <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Any additional information..."
+                ></textarea>
+
+            </div>
+
+
+
+            <!-- Terms -->
+
+            <div class="form-group">
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        id="terms"
+                        required
+                    >
+
+                    I confirm that the information provided
+                    by me is correct.
+
+                </label>
+
+            </div>
+
+
+
+            <!-- Submit -->
+
+            <button
+                type="submit"
+                class="submit-btn"
+            >
+
+                📝 Submit Registration
+
+            </button>
+
+
+        </form>
+
+
+
+        <!-- Success -->
+
+        <div id="successMessage">
+
+            <strong>✅ Registration Submitted Successfully!</strong>
+
+            <br><br>
+
+            Your registration has been sent for Admin approval.
+
+            <br>
+
+            After approval, your Staff ID and Password
+            will be generated.
+
+        </div>
+
+
+
+        <!-- Login -->
+
+        <div class="login-link">
+
+            Already registered?
+
+            <a href="staff.html">
+                Staff Dashboard
             </a>
 
         </div>
 
-    </main>
+    </div>
 
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        © 2026 FixMitra | Staff Registration
+
+    </footer>
+
+
+
+    <!-- JavaScript -->
 
     <script>
 
@@ -379,14 +663,29 @@
 
                 event.preventDefault();
 
+
                 const name =
-                    document.getElementById("fullName").value.trim();
+                    document.getElementById("staffName").value.trim();
 
                 const mobile =
-                    document.getElementById("mobile").value.trim();
+                    document.getElementById("staffMobile").value.trim();
 
                 const email =
-                    document.getElementById("email").value.trim();
+                    document.getElementById("staffEmail").value.trim();
+
+
+                if (name === "" ||
+                    mobile === "" ||
+                    email === "") {
+
+                    alert(
+                        "Please fill all required fields."
+                    );
+
+                    return;
+
+                }
+
 
                 if (!/^[0-9]{10}$/.test(mobile)) {
 
@@ -395,17 +694,50 @@
                     );
 
                     return;
+
                 }
 
-                alert(
-                    "Registration form submitted successfully!\n\n" +
-                    "Thank you, " + name + ".\n\n" +
-                    "Your application will be reviewed by Admin."
-                );
+
+                const confirmSubmit =
+                    confirm(
+                        "Are you sure you want to submit your Staff Registration?"
+                    );
+
+
+                if (!confirmSubmit) {
+                    return;
+                }
+
+
+                /*
+                 * Current stage:
+                 * Demo registration only.
+                 *
+                 * Later this form will be connected
+                 * with the FixMitra backend/database.
+                 */
+
+
+                document
+                    .getElementById("staffRegistrationForm")
+                    .style.display = "none";
+
+
+                document
+                    .getElementById("successMessage")
+                    .style.display = "block";
+
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
 
             });
 
     </script>
 
+
 </body>
+
 </html>
