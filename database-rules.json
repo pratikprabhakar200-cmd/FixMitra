@@ -1,0 +1,24 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "bookings": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    },
+    "mitras": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    },
+    "publicBookingLookup": {
+      "$phone": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
+    }
+  }
+}
